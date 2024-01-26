@@ -1,0 +1,35 @@
+[33mcommit b3d5ee7386e83332da0e76f47e595f52fcee5e76[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mmain[m[33m)[m
+Author: Ann Edvinsson <aslin.edvinsson@gmail.com>
+Date:   Fri Jan 26 09:05:11 2024 +0000
+
+    Add Comment model
+
+[33mcommit f81b303e7c63df76df0b28f45c046bb268ebe51e[m
+Author: Ann Edvinsson <aslin.edvinsson@gmail.com>
+Date:   Fri Jan 26 07:49:59 2024 +0000
+
+    Add RecipePost model
+
+[33mcommit 7231516ad58456c2da77ed9d30b0369de5e7100d[m
+Author: Ann Edvinsson <aslin.edvinsson@gmail.com>
+Date:   Fri Jan 26 07:34:27 2024 +0000
+
+    Connect to database, deplyment settings
+
+[33mcommit 898a161779bc752e9bc86323b7b9e70d355b8ec4[m
+Author: Ann Edvinsson <aslin.edvinsson@gmail.com>
+Date:   Fri Jan 26 07:14:37 2024 +0000
+
+    Deploy project in Heroku
+
+[33mcommit 4a9d0226bc4964bd2fe4922a4622a5bbe191a503[m
+Author: Ann Edvinsson <aslin.edvinsson@gmail.com>
+Date:   Fri Jan 26 07:09:28 2024 +0000
+
+    Initial setup, create django project and app (blog)
+
+[33mcommit 49a0f339523e027c913c958419a86a0a13339b7d[m
+Author: aslinedvinsson <144523508+aslinedvinsson@users.noreply.github.com>
+Date:   Fri Jan 26 07:47:56 2024 +0100
+
+    Initial commit
