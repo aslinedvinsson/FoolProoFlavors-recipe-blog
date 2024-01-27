@@ -18,9 +18,9 @@
                                     <p class="contributor">User: {{ recipepost.user }}</p>
                                 </div>
                             </div>
-                            <a href="#" class="post-link">
+                            <a href="{% url 'recipepost_detail' recipepost.slug %}" class="recipepost-link">
                                 <h2 class="card-title">{{ recipepost.title }}</h2>
-                                <p class="card-text">{{ post.excerpt }}</p>
+                                <p class="card-text">{{ recipepost.excerpt }}</p>
                             </a>
 
                             <hr />
@@ -57,5 +57,5 @@
 <!-- index.html content ends here -->
 {% endblock %}
 {% block copyright %}
-Copyright 2023 Matt Rudge
+Copyright 2024 Ann Edvinsson
 {% endblock %}
