@@ -28,5 +28,5 @@ def recipepost_detail(request, slug):
     return render(
         request,
         "blog/recipepost_detail.html",
-        {"recipepost": recipepost},
+        {"recipepost": recipepost,},
     )
