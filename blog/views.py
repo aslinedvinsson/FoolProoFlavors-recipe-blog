@@ -24,9 +24,14 @@ def recipepost_detail(request, slug):
 
     queryset = RecipePost.objects.filter(status=1)
     recipepost = get_object_or_404(queryset, slug=slug)
+    comments = recipepost.comments.all().order_by("-created_on")
+    comment_count = recipepost.comments.filter(approved=True).count()
+
 
     return render(
         request,
         "blog/recipepost_detail.html",
-        {"recipepost": recipepost,},
+        {"recipepost": recipepost,
+        "comments": comments,
+        "comment_count": comment_count,},
     )
