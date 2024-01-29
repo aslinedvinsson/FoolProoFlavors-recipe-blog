@@ -15,11 +15,11 @@
                     <div class="card mb-4">
                         <div class="card-body">
                             <div class="image-container">
-                                {% if "placeholder" in post.featured_image.url %}
+                                {% if "placeholder" in recipepost.featured_image.url %}
                                 <img class="card-img-top" src="{% static 'images/default.jpg' %}"
                                     alt="placeholder image">
                                 {% else %}
-                                <img class="card-img-top" src=" {{ post.featured_image.url }}" alt="{{ post.title }}">
+                                <img class="card-img-top" src=" {{ recipepost.featured_image.url }}" alt="{{ recipepost.title }}">
                                 {% endif %}
                                 <div class="image-flash">
                                     <p class="contributor">User: {{ recipepost.user }}</p>
