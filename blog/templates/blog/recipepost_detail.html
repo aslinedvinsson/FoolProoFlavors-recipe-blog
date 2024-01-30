@@ -12,6 +12,7 @@
           created date goes after -->
         <p class="recipepost-subtitle">{{ recipepost.user }} |
           {{ recipepost.created_on }}</p>
+        <p class="recipepost-excerpt">{{ recipepost.excerpt | safe }}</p>
       </div>
       <div class="d-none d-md-block col-md-6 masthead-image">
         <img src="{% static 'images/default.jpg' %}" class="scale"
@@ -28,11 +29,45 @@
         <!-- The recipepost content goes inside the card-text. -->
         <!-- Use the | safe filter inside the template tags -->
         <article class="card-text">
-          {{ recipepost.content | safe }}
+          <h2>Ingredients</h2>
+          {{ recipepost.ingredients | safe }}
+          <h2>Instructions</h2>
+          {{ recipepost.instructions | safe }}
         </article>
       </div>
     </div>
   </div>
+  <div class="row">
+    <div class="col-12">
+      <strong class="text-secondary">
+        <p>Rating: {{ average_rating|default:0 }}/10</p>
+      </strong>
+    </div>
+    <div class="col-12">
+      <hr>
+    </div>
+  </div>
+ <!-- Creating New Rating -->
+<div class="row">
+  <div class="col-md-4 card mb-4 mt-3">
+      <div class="card-body">
+          {% if user.is_authenticated %}
+          <h3>Leave a rating:</h3>
+          <form id="ratingForm" method="post" style="margin-top: 1.3em;">
+              {% csrf_token %}
+              {% load crispy_forms_tags %}
+              {{ rating_form|crispy }}
+              <button id="submitRatingButton" type="submit" class="btn btn-signup btn-lg">Submit Rating</button>
+          </form>
+          {% else %}
+          <p>Log in to leave a rating</p>
+          {% endif %}
+      </div>
+  </div>
+</div>
+  </div>
+</div>
+
   <!-- Displaying count of comments -->
   <div class="row">
     <div class="col-12">

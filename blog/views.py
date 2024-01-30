@@ -2,8 +2,9 @@ from django.shortcuts import render, get_object_or_404, reverse
 from django.views import generic
 from django.contrib import messages
 from django.http import HttpResponseRedirect
-from .models import RecipePost, Comment
-from .forms import CommentForm
+from django.db.models import Avg
+from .models import RecipePost, Comment, RecipeRating
+from .forms import CommentForm, RatingForm
 
 
 
@@ -25,7 +26,7 @@ def recipepost_detail(request, slug):
 
     :template:`blog/recipepost_detail.html`
     """
-
+    """
     queryset = RecipePost.objects.filter(status=1)
     recipepost = get_object_or_404(queryset, slug=slug)
     comments = recipepost.comments.all().order_by("-created_on")
@@ -52,6 +53,61 @@ def recipepost_detail(request, slug):
         "comments": comments,
         "comment_count": comment_count,
         "comment_form": comment_form,
+        },
+    )
+    """
+    queryset = RecipePost.objects.filter(status=1)
+    recipepost = get_object_or_404(RecipePost, slug=slug)
+    comments = recipepost.comments.filter(approved=True).order_by("-created_on")
+    comment_count = comments.count()
+
+    comment_form = CommentForm()
+    rating_form = RatingForm()
+
+    if request.method == "POST":
+        if 'comment_form' in request.POST:
+            comment_form = CommentForm(request.POST)
+            if comment_form.is_valid():
+                comment = comment_form.save(commit=False)
+                comment.user = request.user
+                comment.recipepost = recipepost
+                comment.save()
+                messages.add_message(
+                    request, messages.SUCCESS,
+                    'Comment submitted and awaiting approval'
+                )
+        elif 'rating_form' in request.POST:
+            rating_form = RatingForm(request.POST)
+            if rating_form.is_valid():
+                reciperating = rating_form.cleaned_data['reciperating']
+
+                # Prevent users from rating their own recipes
+                if recipepost.user == request.user:
+                    messages.error(request, 'You cannot rate your own recipe.')
+                else:
+                    # Check if the user has already rated the recipe, and update the rating if they have
+                    existing_rating = RecipeRating.objects.filter(user=request.user, recipepost=recipepost).first()
+                    if existing_rating:
+                        existing_rating.reciperating = reciperating
+                        existing_rating.save()
+                    else:
+                        RecipeRating.objects.create(user=request.user, recipepost=recipepost, reciperating=reciperating)
+
+                    messages.success(request, 'Rating saved successfully')
+
+    # Calculate the average rating
+    average_rating = RecipeRating.objects.filter(recipepost=recipepost).aggregate(Avg('reciperating'))['reciperating__avg']
+
+    return render(
+        request,
+        "blog/recipepost_detail.html",
+        {
+            "recipepost": recipepost,
+            "comments": comments,
+            "comment_count": comment_count,
+            "comment_form": comment_form,
+            "rating_form": rating_form,
+            "average_rating": average_rating,
         },
     )
 
@@ -101,3 +157,28 @@ def comment_delete(request, slug, comment_id):
         messages.add_message(request, messages.ERROR, 'You can only delete your own comments!')
 
     return HttpResponseRedirect(reverse('recipepost_detail', args=[slug]))
+
+
+def rate_recipe(request, slug):
+    if request.method == 'POST':
+        reciperating = request.POST.get('reciperating')
+        recipepost = get_object_or_404(RecipePost, slug=slug)
+
+        # Prevent users from rating their own recipes
+        if recipepost.user == request.user:
+            messages.error(request, 'You cannot rate your own recipe.')
+            return redirect('recipepost_detail', slug=slug)
+
+        # Check if the user has already rated the recipe, and update the rating if they have
+        existing_rating = RecipeRating.objects.filter(user=request.user, recipepost=recipepost).first()
+        if existing_rating:
+            existing_rating.reciperating = reciperating
+            existing_rating.save()
+        else:
+            RecipeRating.objects.create(user=request.user, recipepost=recipepost, reciperating=reciperating)
+
+        messages.success(request, 'Rating saved successfully')
+        return redirect('recipepost_detail', slug=slug)
+
+    # Redirect back if the request method is not POST
+    return redirect('recipepost_detail', slug=slug)

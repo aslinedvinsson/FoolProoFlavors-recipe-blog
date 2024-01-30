@@ -23,7 +23,7 @@ EFFORT = (("bad_day_comfort_food", "Bad day comfort food"),
 ("trying_a_healthy_day", "Trying a healthy day"), ("im_in_a_hurry", "I'm in a hurry"),
 ("i_have_time_but_no_brains", "I have time but no brains"), ("to_far_until_payday", "To far until payday"))
 
-
+#Inspired by the CodeInstitute Walkthrough 'I think, therefor I blog' and Django Recipe Sharing Tutorial
 class RecipePost(models.Model):
     """
     A model to create and manage a recipe post related to :model:`auth.User`
@@ -34,11 +34,13 @@ class RecipePost(models.Model):
     )
     title = models.CharField(max_length=200, null=False, blank=False)
     slug = models.SlugField(max_length=200, unique=True)
-    #featured_image = CloudinaryField('image', default='placeholder')
+    featured_image = CloudinaryField('image', default='placeholder')
     excerpt = models.TextField(blank=True)
     #content = models.TextField(max_length=10000, null=False, blank=False)
-    ingredients = RichTextField(max_length=10000, null=False, blank=False, default="")
-    instructions = RichTextField(max_length=10000, null=False, blank=False, default="")
+    #ingredients = RichTextField(max_length=10000, null=False, blank=False, default="")
+    #instructions = RichTextField(max_length=10000, null=False, blank=False, default="")
+    ingredients = models.TextField(max_length=10000, null=False, blank=False)
+    instructions = models.TextField(max_length=10000, null=False, blank=False)
     created_on = models.DateTimeField(auto_now_add=True)
     status = models.IntegerField(choices=STATUS, default=0)
     updated_on = models.DateTimeField(auto_now=True)
@@ -46,6 +48,8 @@ class RecipePost(models.Model):
     effort = models.CharField(
         max_length=50, choices=EFFORT, default="Bad day comfort food"
     )
+
+    """
     image = ResizedImageField(
         size=[400, None],
         quality=75,
@@ -55,6 +59,7 @@ class RecipePost(models.Model):
         null=False,
         default='placeholder'
     )
+    """
 
     image_alt = models.CharField(max_length=100, null=False, blank=False)
 
@@ -79,3 +84,12 @@ class Comment(models.Model):
 
     def __str__(self):
         return f'Comment {self.body} | added by {self.user}'
+
+
+class RecipeRating(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    recipepost = models.ForeignKey(RecipePost, on_delete=models.CASCADE)
+    reciperating = models.IntegerField()
+
+    def __str__(self):
+        return f'{self.recipepost.title} | {self.user} - {self.reciperating} out of 10'
