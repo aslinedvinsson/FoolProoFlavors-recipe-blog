@@ -11,6 +11,7 @@ EFFORT = (("bad_day_comfort_food", "Bad day comfort food"),
 ("trying_a_healthy_day", "Trying a healthy day"), ("im_in_a_hurry", "I'm in a hurry"),
 ("i_have_time_but_no_brains", "I have time but no brains"))
 
+
 class RecipePost(models.Model):
     """
     A model to create and manage a recipe post related to :model:`auth.User`

@@ -3,7 +3,7 @@ from cloudinary.models import CloudinaryField
 
 class About(models.Model):
     """
-    A model to create and manage content in an About page
+
     """
     title = models.CharField(max_length=200)
     content = models.TextField()

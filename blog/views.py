@@ -57,7 +57,14 @@ def recipepost_detail(request, slug):
 
 def comment_edit(request, slug, comment_id):
     """
-    view to edit comments
+    Display an individual comment for edit-
+    **Context**
+    ``post```
+        An instance of :model:`blog.Post`.
+    ``comment```
+        A single comment related to the post.
+    ``comment_form```
+        An instance of :form:`blog.CommentForm`.
     """
     if request.method == "POST":
 

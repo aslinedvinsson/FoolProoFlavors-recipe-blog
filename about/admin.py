@@ -1,6 +1,7 @@
 from django.contrib import admin
-from .models import About, ContactRequest
 from django_summernote.admin import SummernoteModelAdmin
+from .models import About, ContactRequest
+
 
 
 # Register your models here.

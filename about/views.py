@@ -7,9 +7,15 @@ from .forms import ContactForm
 def about_us(request):
 
     """
-    Taken from walk trhough: rewrite
-    Renders the About page
-    **Template**
+    Renders the most recent information on the website user and allows contact
+    request.
+    Displays an individual instance of :model:`about.About`.
+    **Context**
+    ``about```
+        The most recent instance of :model:`about.About`.
+    ``contact_form``
+        An instance of :form: `about.ContactForm`.
+    **Template:**
     :template:`about/about.html`
     """
 

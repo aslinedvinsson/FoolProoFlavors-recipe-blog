@@ -16,22 +16,30 @@
                         <div class="card-body">
                             <div class="image-container">
                                 {% if "placeholder" in recipepost.featured_image.url %}
-                                <img class="card-img-top" src="{% static 'images/default.jpg' %}"
+                                <img class="card-img-top"
+                                    src="{% static 'images/default.jpg' %}"
                                     alt="placeholder image">
                                 {% else %}
-                                <img class="card-img-top" src=" {{ recipepost.featured_image.url }}" alt="{{ recipepost.title }}">
+                                <img class="card-img-top"
+                                    src=" {{ recipepost.featured_image.url }}"
+                                    alt="{{ recipepost.title }}">
                                 {% endif %}
                                 <div class="image-flash">
-                                    <p class="contributor">User: {{ recipepost.user }}</p>
+                                    <p class="contributor">User:
+                                        {{ recipepost.user }}</p>
                                 </div>
                             </div>
-                            <a href="{% url 'recipepost_detail' recipepost.slug %}" class="recipepost-link">
-                                <h2 class="card-title">{{ recipepost.title }}</h2>
-                                <p class="card-text">{{ recipepost.excerpt }}</p>
+                            <a href="{% url 'recipepost_detail' recipepost.slug %}"
+                                class="recipepost-link">
+                                <h2 class="card-title">{{ recipepost.title }}
+                                </h2>
+                                <p class="card-text">{{ recipepost.excerpt }}
+                                </p>
                             </a>
 
                             <hr />
-                            <p class="card-text text-muted h6">{{ recipepost.created_on}}
+                            <p class="card-text text-muted h6">
+                                {{ recipepost.created_on}}
                             </p>
                         </div>
                     </div>
@@ -41,7 +49,6 @@
             <div class="row">
                 {% endif %}
                 {% endfor %}
-
             </div>
         </div>
     </div>
@@ -50,11 +57,13 @@
         <ul class="pagination justify-content-center">
             {% if page_obj.has_previous %}
             <li>
-                <a href="?page={{ page_obj.previous_page_number }}" class="page-link">&laquo; PREV</a>
+                <a href="?page={{ page_obj.previous_page_number }}"
+                    class="page-link">&laquo; PREV</a>
             </li>
             {% endif %}
             {% if page_obj.has_next %}
-            <li><a href="?page={{ page_obj.next_page_number }}" class="page-link"> NEXT &raquo;</a></li>
+            <li><a href="?page={{ page_obj.next_page_number }}"
+                    class="page-link"> NEXT &raquo;</a></li>
             {% endif %}
         </ul>
     </nav>
