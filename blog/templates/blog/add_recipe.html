@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+
+{% block content %}
+{% load static %}
+{% load crispy_forms_tags %}
+
+  <h2>Add Recipe</h2>
+  <!--{% if user.is_authenticated %}-->
+  <form method="post" id="addRecipe">
+    {% csrf_token %}
+
+    {% if form.errors %}
+            <div class="alert alert-danger">
+                <strong>Error!</strong> Please correct the errors below.
+                {{ form.errors }}
+            </div>
+        {% endif %}
+      {{ form | crispy }}
+      <div class="text-center">
+        <button type="submit" class="btn btn-primary mt-2">Create Recipe</button>
+    </div>
+    </form>
+
+  {% endif %}
+
+
+{% endblock %}
+
+{% block extras %}
+<script src="{% static 'js/recipe.js' %}"></script>
+{% endblock %}

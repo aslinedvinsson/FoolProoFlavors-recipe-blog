@@ -34,11 +34,8 @@ class RecipePost(models.Model):
     )
     title = models.CharField(max_length=200, null=False, blank=False)
     slug = models.SlugField(max_length=200, unique=True)
-    featured_image = CloudinaryField('image', default='placeholder')
+    food_image = CloudinaryField('image', default='placeholder')
     excerpt = models.TextField(blank=True)
-    #content = models.TextField(max_length=10000, null=False, blank=False)
-    #ingredients = RichTextField(max_length=10000, null=False, blank=False, default="")
-    #instructions = RichTextField(max_length=10000, null=False, blank=False, default="")
     ingredients = models.TextField(max_length=10000, null=False, blank=False)
     instructions = models.TextField(max_length=10000, null=False, blank=False)
     created_on = models.DateTimeField(auto_now_add=True)
@@ -48,20 +45,12 @@ class RecipePost(models.Model):
     effort = models.CharField(
         max_length=50, choices=EFFORT, default="Bad day comfort food"
     )
-
-    """
-    image = ResizedImageField(
-        size=[400, None],
-        quality=75,
-        upload_to="recipes/",
-        force_format="WEBP",
-        blank=False,
-        null=False,
-        default='placeholder'
-    )
-    """
-
     image_alt = models.CharField(max_length=100, null=False, blank=False)
+
+    def save(self, *args, **kwargs):
+        if not self.slug:
+            self.slug = self.title.replace(" ", "-")
+        super().save(*args, **kwargs)
 
     class Meta:
         ordering = ["-created_on"]
@@ -93,3 +82,4 @@ class RecipeRating(models.Model):
 
     def __str__(self):
         return f'{self.recipepost.title} | {self.user} - {self.reciperating} out of 10'
+
