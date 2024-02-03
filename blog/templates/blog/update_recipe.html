@@ -3,11 +3,20 @@
 {% block content %}
 {% load static %}
 {% load crispy_forms_tags %}
-  <h2>Edit Recipe</h2>
-  <form method="post">
+  <h2>Update Recipe</h2>
+  <form method="post" id="recipePostForm" enctype="multipart/form-data">
     {% csrf_token %}
-    {{ form.as_p }}
-    <button type="submit">Update</button>
-  </form>
+    {% if form.errors %}
+            <div class="alert alert-danger">
+                <strong>Error!</strong> Please correct the errors below.
+                {{ form.errors }}
+            </div>
+        {% endif %}
+      {{ form | crispy }}
+      <div class="text-center">
+        <button type="submit" class="btn btn-primary mt-2">Update Recipe</button>
+    </div>
+    </form>
 {% endblock %}
+
 

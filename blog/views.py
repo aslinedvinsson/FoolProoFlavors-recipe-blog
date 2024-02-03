@@ -10,9 +10,6 @@ from .models import RecipePost, Comment, RecipeRating
 from .forms import CommentForm, RatingForm, RecipePostForm
 
 
-
-
-
 class RecipePostList(generic.ListView):
     queryset = RecipePost.objects.filter(status=1)
     template_name = "blog/index.html"
@@ -135,6 +132,7 @@ def comment_delete(request, slug, comment_id):
         messages.add_message(request, messages.ERROR, 'You can only delete your own comments!')
 
     return HttpResponseRedirect(reverse('recipepost_detail', args=[slug]))
+
 
 def rate_recipe(request, slug):
     if request.method == 'POST' and 'reciperating' in request.POST:

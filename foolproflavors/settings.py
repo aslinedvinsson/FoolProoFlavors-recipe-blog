@@ -36,6 +36,7 @@ SECRET_KEY = os.environ.get("SECRET_KEY")
 DEBUG = True
 
 ALLOWED_HOSTS = ['8000-aslinedvins-foolproflav-h2c96qwedmv.ws-eu107.gitpod.io',
+'8000-aslinedvins-foolproflav-h2c96qwedmv.ws-eu108.gitpod.io',
 '.herokuapp.com']
 
 
@@ -48,6 +49,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'cloudinary_storage',
     'django.contrib.sites',
     'allauth',
     'allauth.account',
@@ -62,7 +64,6 @@ INSTALLED_APPS = [
     'crispy_forms',
     'crispy_bootstrap5',
     'cloudinary',
-    #'cloudinary_storage',
     'djrichtextfield'
 ]
 

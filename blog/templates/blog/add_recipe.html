@@ -6,7 +6,7 @@
 
   <h2>Add Recipe</h2>
   <!--{% if user.is_authenticated %}-->
-  <form method="post" id="addRecipe">
+  <form method="post" id="addRecipe" enctype="multipart/form-data">
     {% csrf_token %}
 
     {% if form.errors %}
