@@ -12,11 +12,21 @@
                 {{ form.errors }}
             </div>
         {% endif %}
-      {{ form | crispy }}
+
+        {{ form.media }}
+        {{ form|crispy }}
+
+        {% if existing_image_public_id %}
+        <p>Current Image: {{ existing_image_public_id }}</p>
+    {% endif %}
       <div class="text-center">
         <button type="submit" class="btn btn-primary mt-2">Update Recipe</button>
     </div>
     </form>
+{% endblock %}
+
+{% block extras %}
+<script src="{% static 'js/recipe.js' %}"></script>
 {% endblock %}
 
 

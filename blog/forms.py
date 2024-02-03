@@ -4,6 +4,7 @@ from .models import RecipeRating
 from .models import RecipePost
 
 
+
 class CommentForm(forms.ModelForm):
     class Meta:
         model = Comment
@@ -22,6 +23,14 @@ class RatingForm(forms.ModelForm):
 
 
 class RecipePostForm(forms.ModelForm):
+    existing_image_public_id = forms.CharField(widget=forms.HiddenInput, required=False)
+
+
+
     class Meta:
         model = RecipePost
         fields = ['title', 'excerpt', 'ingredients', 'instructions', 'meal_type', 'effort', 'food_image', 'image_alt']
+
+    def __init__(self, *args, **kwargs):
+        super(RecipePostForm, self).__init__(*args, **kwargs)
+

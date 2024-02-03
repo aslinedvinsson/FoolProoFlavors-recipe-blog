@@ -8,6 +8,8 @@ from django.urls import reverse_lazy
 from django.utils.text import slugify
 from .models import RecipePost, Comment, RecipeRating
 from .forms import CommentForm, RatingForm, RecipePostForm
+import cloudinary
+
 
 
 class RecipePostList(generic.ListView):
@@ -176,10 +178,64 @@ class UpdateRecipe(UpdateView):
     model = RecipePost
     form_class = RecipePostForm
     template_name = 'blog/update_recipe.html'
-    success_url = reverse_lazy('recipepost_detail')
+    #success_url = reverse_lazy('recipepost_detail')
+
+    def get_success_url(self):
+        return reverse_lazy('recipepost_detail', kwargs={'slug': self.object.slug})
 
     def get_queryset(self):
         return RecipePost.objects.filter(user=self.request.user)
+
+    def get(self, request, *args, **kwargs):
+        self.object = self.get_object()
+        form = self.get_form()
+        context = {
+            'form': form,
+            'existing_image_public_id': self.extract_public_id(self.object.food_image.url) if self.object.food_image else None,
+        }
+        return self.render_to_response(context)
+
+    def post(self, request, *args, **kwargs):
+        self.object = self.get_object()
+        form = self.get_form()
+        if form.is_valid():
+            return self.form_valid(form)
+        else:
+            return self.form_invalid(form)
+
+    def extract_public_id(self, cloudinary_url):
+        try:
+            parts = cloudinary_url.split('/')
+            public_id_with_format = parts[-1].split('.')[0]
+            # Extract the public_id from the filename
+            public_id = public_id_with_format.split('_')[0]
+            return public_id
+        except Exception as e:
+            print(f"Error extracting public_id: {e}")
+            return None
+"""
+    def get_form_kwargs(self):
+        kwargs = super().get_form_kwargs()
+        # Pass the existing image URL to the form
+        kwargs['existing_image_url'] = self.object.food_image.url if self.object.food_image else None
+        return kwargs
+
+    def get_success_url(self):
+        return reverse_lazy('recipepost_detail', kwargs={'slug': self.object.slug})
+
+    def get_queryset(self):
+        return RecipePost.objects.filter(user=self.request.user)
+
+
+  # Extract the file name from the Cloudinary URL
+        current_image_filename = recipe.current_image.split('/')[-1]
+
+        context = {
+            'form': form,
+            'current_image_filename': current_image_filename,
+        }
+        return render(request, 'update_recipe.html', context)
+    """
 
 
 class DeleteRecipe(DeleteView):

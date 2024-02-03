@@ -1,5 +1,6 @@
 const updateRecipeButtons = document.getElementsByClassName("btn-edit");
 const recipePostForm = document.getElementById("recipePostForm");
+console.log("recipePostForm:", recipePostForm);
 //const updateRecipeModal = new bootstrap.Modal(document.getElementById("updateRecipeModal"));
 const deleteRecipeButtons = document.getElementsByClassName("btn-delete-recipe");
 const deleteRecipeModal = new bootstrap.Modal(document.getElementById("deleteRecipeModal"));
@@ -15,7 +16,6 @@ const deleteRecipeConfirm = document.getElementById("deleteRecipeConfirm");
  * - Opens the edit modal (`editRecipeModal`) to allow editing.
  */
 
-
 for (let button of updateRecipeButtons) {
     button.addEventListener("click", (e) => {
         console.log("Edit button clicked!");
@@ -23,11 +23,20 @@ for (let button of updateRecipeButtons) {
         let updateUrl = e.target.getAttribute("data-update_url");
         console.log("Recipe ID:", recipeId);
         console.log("Update URL:", updateUrl);
+        console.log("recipePostForm (inside event listener):", recipePostForm);
+         // Redirect to update_recipe.html
+         window.location.href = updateUrl;
 
-        // Set the form action dynamically
-        recipePostForm.setAttribute("action", updateUrl);
+        //setTimeout(() => {
+            // Set the form action dynamically
+            //recipePostForm.setAttribute("action", updateUrl);
+       // }, 50);
     });
+    console.log("updateRecipeButtons:", updateRecipeButtons);
+
 }
+
+
 
 
 
@@ -49,9 +58,9 @@ for (let button of deleteRecipeButtons) {
         deleteRecipeConfirm.href = `delete_recipe/${recipeId}`;
         deleteRecipeModal.show();
     });
-}
 
-console.log("updateRecipeButtons:", updateRecipeButtons);
-console.log("recipePostForm:", recipePostForm);
+
 console.log("deleteRecipeModal:", deleteRecipeModal);
-console.log("deleteRecipeConfirm:", deleteRecipeConfirm);
+console.log("deleteRecipeConfirm:", deleteRecipeConfirm)
+
+}
