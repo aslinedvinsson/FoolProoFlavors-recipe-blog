@@ -6,10 +6,10 @@ from django.http import HttpResponseRedirect
 from django.db.models import Avg
 from django.urls import reverse_lazy
 from django.utils.text import slugify
+from django.core.exceptions import PermissionDenied
 from .models import RecipePost, Comment, RecipeRating
 from .forms import CommentForm, RatingForm, RecipePostForm
 import cloudinary
-
 
 
 class RecipePostList(generic.ListView):
@@ -186,6 +186,10 @@ class UpdateRecipe(UpdateView):
     def get_queryset(self):
         return RecipePost.objects.filter(user=self.request.user)
 
+    def form_valid(self, form):
+        messages.success(self.request, 'Recipe updated!')
+        return super().form_valid(form)
+
     def get(self, request, *args, **kwargs):
         self.object = self.get_object()
         form = self.get_form()
@@ -239,14 +243,20 @@ class UpdateRecipe(UpdateView):
 
 
 class DeleteRecipe(DeleteView):
-    model = RecipePost
-    template_name = 'blog/delete_recipe.html'
-    success_url = reverse_lazy('recipepost_list')
+    def get(self, request, *args, **kwargs):
+        recipe_slug = self.kwargs.get('slug')
+        recipepost = get_object_or_404(RecipePost, slug=recipe_slug)
 
-    def get_object(self, queryset=None):
-        obj = super().get_object(queryset=queryset)
-        if not obj.user == self.request.user:
-            raise PermissionDenied("You don't have permission to delete this recipe.")
-        return obj
+        # Check if the user is the author or has the necessary permissions
+        if recipepost.user == request.user:
+            recipepost.delete()
+            messages.add_message(request, messages.SUCCESS, 'Recipe deleted!')
+
+            return HttpResponseRedirect(reverse('home'))
+        else:
+            # Handle unauthorized access, maybe show an error page or redirect
+            messages.add_message(request, messages.ERROR, 'You can only delete your own recipes!')
+            return HttpResponseRedirect(reverse('home'))
+
 
 
