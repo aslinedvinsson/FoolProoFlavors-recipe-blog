@@ -80,7 +80,7 @@ aria-labelledby="deleteRecipeModalLabel" aria-hidden="true">
 </div>
 </div>
 
-  <!-- Creating New Rating -->
+  <!-- Creating New Rating
 <div class="row">
   <div class="col-md-4 card mb-4 mt-3">
       <div class="card-body">
@@ -89,8 +89,8 @@ aria-labelledby="deleteRecipeModalLabel" aria-hidden="true">
           <form id="ratingForm" method="post" style="margin-top: 1.3em;">
               {% csrf_token %}
 
-              <!-- Include the input field for rating -->
-              {{ rating_form.reciperating|as_crispy_field }}
+             Include the input field for rating
+             {# {{ rating_form.reciperating|as_crispy_field }}#}
 
               <button id="submitRatingButton" type="submit" class="btn btn-signup btn-lg">Submit Rating</button>
           </form>
@@ -99,8 +99,7 @@ aria-labelledby="deleteRecipeModalLabel" aria-hidden="true">
           {% endif %}
       </div>
   </div>
-</div>
-
+</div>-->
 
 <!-- Displaying count of comments -->
 <div class="row">
@@ -140,10 +139,15 @@ aria-labelledby="deleteRecipeModalLabel" aria-hidden="true">
         {% endif %}
         {% if user.is_authenticated and comment.user == user %}
         <button class="btn btn-delete"
-          data-comment_id="{{ comment.id }}">Delete</button>
-        <button class="btn btn-edit"
-          data-comment_id="{{ comment.id }}">Edit</button>
+          comment_id="{{ comment.id }}">Delete</button>
+
+          <button class="btn btn-edit" comment_id="{{ comment.id }}"
+          data-slug="{{ recipepost.slug }}">Edit</button>
         {% endif %}
+
+
+
+
       </div>
       <!-- Our for loop ends here -->
       {% endfor %}
@@ -154,7 +158,7 @@ aria-labelledby="deleteRecipeModalLabel" aria-hidden="true">
     <div class="card-body">
       {% if user.is_authenticated %}
       <h3>Leave a comment:</h3>
-      <p>Posting as: {{ user.username }}</p>
+      <p>Posting as: {{ user.user }}</p>
       <form id="commentForm" method="post"
         style="margin-top: 1.3em;">
         {{ comment_form | crispy }}
@@ -165,6 +169,7 @@ aria-labelledby="deleteRecipeModalLabel" aria-hidden="true">
       {% else %}
       <p>Log in to leave a comment</p>
       {% endif %}
+
     </div>
   </div>
 </div>
@@ -175,9 +180,10 @@ aria-labelledby="deleteRecipeModalLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="deleteModalLabel">Delete comment?</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal"
-          aria-label="Close"></button>
+        <h5 class="modal-title"
+          id="deleteModalLabel">Delete comment?</h5>
+        <button type="button" class="btn-close"
+          data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
         Are you sure you want to delete your comment?
@@ -192,7 +198,6 @@ aria-labelledby="deleteRecipeModalLabel" aria-hidden="true">
     </div>
   </div>
 </div>
-
 {% endblock content %}
 
 {% block extras %}

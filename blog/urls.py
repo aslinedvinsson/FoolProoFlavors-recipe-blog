@@ -11,10 +11,11 @@ urlpatterns = [
     path('<slug:slug>/edit_comment/<int:comment_id>',
         views.comment_edit, name='comment_edit'),
     path('<slug:slug>/delete_comment/<int:comment_id>',
-        views.comment_delete, name='comment_delete'),
-    path('<slug:slug>/rate/', views.rate_recipe, name='rate_recipe'),
+         views.comment_delete, name='comment_delete'),
+    #path('<slug:slug>/rate/', views.rate_recipe, name='rate_recipe'),
     path('update/<slug:slug>/', UpdateRecipe.as_view(), name='update_recipe'),
     path('delete_recipe/<slug:slug>/', DeleteRecipe.as_view(), name='delete_recipe'),
     path('', views.RecipePostList.as_view(), name='home'),
 ]
+
 

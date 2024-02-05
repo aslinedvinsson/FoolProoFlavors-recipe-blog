@@ -10,6 +10,8 @@ class CommentForm(forms.ModelForm):
         model = Comment
         fields = ('body',)
 
+"""
+
 class RatingForm(forms.ModelForm):
     class Meta:
         model = RecipeRating
@@ -20,7 +22,7 @@ class RatingForm(forms.ModelForm):
         if not 1 <= reciperating <= 10:
             raise forms.ValidationError('Rating must be between 1 and 10.')
         return reciperating
-
+"""
 
 class RecipePostForm(forms.ModelForm):
     existing_image_public_id = forms.CharField(widget=forms.HiddenInput, required=False)

@@ -8,7 +8,7 @@ from django.urls import reverse_lazy
 from django.utils.text import slugify
 from django.core.exceptions import PermissionDenied
 from .models import RecipePost, Comment, RecipeRating
-from .forms import CommentForm, RatingForm, RecipePostForm
+from .forms import CommentForm, RecipePostForm #RatingForm,
 import cloudinary
 
 
@@ -29,7 +29,7 @@ def recipepost_detail(request, slug):
     **Template:**
 
     :template:`blog/recipepost_detail.html`
-    """
+
     queryset = RecipePost.objects.filter(status=1)
     recipepost = get_object_or_404(queryset, slug=slug)
     comments = recipepost.comments.filter(approved=True).order_by("-created_on")
@@ -87,17 +87,40 @@ def recipepost_detail(request, slug):
 
         },
     )
+    """
+    queryset = RecipePost.objects.filter(status=1)
+    recipepost = get_object_or_404(queryset, slug=slug)
+    comments = recipepost.comments.all().order_by("-created_on")
+    comment_count = recipepost.comments.filter(approved=True).count()
+    if request.method == "POST":
+        comment_form = CommentForm(data=request.POST)
+        if comment_form.is_valid():
+            comment = comment_form.save(commit=False)
+            comment.user = request.user
+            comment.recipepost = recipepost
+            comment.save()
+            messages.add_message(
+                request, messages.SUCCESS,
+                'Comment submitted and awaiting approval'
+            )
+
+    comment_form = CommentForm()
+
+    return render(
+        request,
+        "blog/recipepost_detail.html",
+        {
+            "recipepost": recipepost,
+            "comments": comments,
+            "comment_count": comment_count,
+            "comment_form": comment_form
+        },
+    )
+
 
 def comment_edit(request, slug, comment_id):
     """
-    Display an individual comment for edit-
-    **Context**
-    ``post```
-        An instance of :model:`blog.Post`.
-    ``comment```
-        A single comment related to the post.
-    ``comment_form```
-        An instance of :form:`blog.CommentForm`.
+    view to edit comments
     """
     if request.method == "POST":
 
@@ -117,14 +140,12 @@ def comment_edit(request, slug, comment_id):
 
     return HttpResponseRedirect(reverse('recipepost_detail', args=[slug]))
 
-
-
 def comment_delete(request, slug, comment_id):
     """
     view to delete comment
     """
     queryset = RecipePost.objects.filter(status=1)
-    recipepost = get_object_or_404(queryset, slug=slug)
+    post = get_object_or_404(queryset, slug=slug)
     comment = get_object_or_404(Comment, pk=comment_id)
 
     if comment.user == request.user:
@@ -135,7 +156,7 @@ def comment_delete(request, slug, comment_id):
 
     return HttpResponseRedirect(reverse('recipepost_detail', args=[slug]))
 
-
+"""
 def rate_recipe(request, slug):
     if request.method == 'POST' and 'reciperating' in request.POST:
         rating_form = RatingForm(request.POST)
@@ -161,7 +182,7 @@ def rate_recipe(request, slug):
 
     # Redirect back if the request method is not POST
     return HttpResponseRedirect(reverse('recipepost_detail', args=[slug]))
-
+"""
 
 class AddRecipe(CreateView):
     model = RecipePost
@@ -217,29 +238,6 @@ class UpdateRecipe(UpdateView):
         except Exception as e:
             print(f"Error extracting public_id: {e}")
             return None
-"""
-    def get_form_kwargs(self):
-        kwargs = super().get_form_kwargs()
-        # Pass the existing image URL to the form
-        kwargs['existing_image_url'] = self.object.food_image.url if self.object.food_image else None
-        return kwargs
-
-    def get_success_url(self):
-        return reverse_lazy('recipepost_detail', kwargs={'slug': self.object.slug})
-
-    def get_queryset(self):
-        return RecipePost.objects.filter(user=self.request.user)
-
-
-  # Extract the file name from the Cloudinary URL
-        current_image_filename = recipe.current_image.split('/')[-1]
-
-        context = {
-            'form': form,
-            'current_image_filename': current_image_filename,
-        }
-        return render(request, 'update_recipe.html', context)
-    """
 
 
 class DeleteRecipe(DeleteView):
