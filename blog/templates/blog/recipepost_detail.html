@@ -47,7 +47,7 @@
   <!-- Edit and delete recipe -->
 
   {% if user.is_authenticated and recipepost.user == user %}
-  <button id="updateButton" class="btn btn-edit"
+  <button id="updateButton" class="btn btn-edit-recipe"
     data-recipe_id="{{ recipepost.id }}"
     data-update_url="{% url 'update_recipe' slug=recipepost.slug %}">Update
     Recipe</button>
@@ -143,8 +143,9 @@
           <button class="btn btn-delete"
             comment_id="{{ comment.id }}">Delete</button>
 
-          <button class="btn btn-edit"
+            <button class="btn btn-edit-comment"
             comment_id="{{ comment.id }}">Edit</button>
+
           {% endif %}
 
 
@@ -201,6 +202,8 @@
 {% endblock content %}
 
 {% block extras %}
+{% load static %}
+
 <script src="{% static 'js/comments.js' %}"></script>
 <script src="{% static 'js/recipe.js' %}"></script>
-{% endblock %}
+{% endblock extras %}

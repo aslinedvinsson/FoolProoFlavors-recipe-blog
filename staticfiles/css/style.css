@@ -115,7 +115,8 @@ body {
 }
 
 .btn-signup,
-.btn-edit {
+.btn.btn-edit-recipe,
+.btn.btn-edit-comment {
     background-color: #188181;
     color: #fff;
 }

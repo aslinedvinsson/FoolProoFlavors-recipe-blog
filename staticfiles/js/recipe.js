@@ -1,4 +1,4 @@
-const updateRecipeButtons = document.getElementsByClassName("btn-edit-recipe");
+// const updateRecipeButtons = document.getElementsByClassName("btn-edit");
 const recipePostForm = document.getElementById("recipePostForm");
 console.log("recipePostForm:", recipePostForm);
 //const updateRecipeModal = new bootstrap.Modal(document.getElementById("updateRecipeModal"));
