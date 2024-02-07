@@ -33,7 +33,7 @@ TEMPLATES_DIR = os.path.join(BASE_DIR, 'templates')
 SECRET_KEY = os.environ.get("SECRET_KEY")
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = ['8000-aslinedvins-foolproflav-h2c96qwedmv.ws-eu107.gitpod.io',
 '8000-aslinedvins-foolproflav-h2c96qwedmv.ws-eu108.gitpod.io',
@@ -64,7 +64,7 @@ INSTALLED_APPS = [
     'crispy_forms',
     'crispy_bootstrap5',
     'cloudinary',
-    'djrichtextfield'
+    #'djrichtextfield'
 ]
 
 SITE_ID = 1
@@ -75,6 +75,7 @@ CRISPY_ALLOWED_TEMPLATE_PACKS = "bootstrap5"
 CRISPY_TEMPLATE_PACK = "bootstrap5"
 
 #Django Recipe Sharing Tutorial
+"""
 DJRICHTEXTFIELD_CONFIG = {
     'js': ['//cdn.ckeditor.com/4.14.0/standard/ckeditor.js'],
     'init_template': 'djrichtextfield/init/ckeditor.js',
@@ -87,6 +88,7 @@ DJRICHTEXTFIELD_CONFIG = {
         'format_tags': 'p, h1, h2, h3'
     }
 }
+"""
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
