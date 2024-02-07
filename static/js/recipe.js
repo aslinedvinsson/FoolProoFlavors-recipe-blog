@@ -5,8 +5,6 @@ const deleteRecipeButtons = document.getElementsByClassName("deleteButtonRecipe"
 const deleteRecipeModal = new bootstrap.Modal(document.getElementById("deleteRecipeModal"));
 const deleteRecipeConfirm = document.getElementById("deleteRecipeConfirm");
 
-
-
 /**
  * Initializes edit functionality for the provided edit buttons.
  *

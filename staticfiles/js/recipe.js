@@ -1,12 +1,9 @@
-// const updateRecipeButtons = document.getElementsByClassName("btn-edit");
+const updateRecipeButtons = document.getElementsByClassName("updateButtonRecipe");
 const recipePostForm = document.getElementById("recipePostForm");
 console.log("recipePostForm:", recipePostForm);
-//const updateRecipeModal = new bootstrap.Modal(document.getElementById("updateRecipeModal"));
-const deleteRecipeButtons = document.getElementsByClassName("btn-delete");
+const deleteRecipeButtons = document.getElementsByClassName("deleteButtonRecipe");
 const deleteRecipeModal = new bootstrap.Modal(document.getElementById("deleteRecipeModal"));
 const deleteRecipeConfirm = document.getElementById("deleteRecipeConfirm");
-
-
 
 /**
  * Initializes edit functionality for the provided edit buttons.

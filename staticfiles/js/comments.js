@@ -1,9 +1,11 @@
-const editButtons = document.getElementsByClassName("btn-edit");
+
+document.addEventListener("DOMContentLoaded", function() {
+const editButtons = document.getElementsByClassName("updateButtonComment");
 const commentText = document.getElementById("id_body");
 const commentForm = document.getElementById("commentForm");
 const submitButton = document.getElementById("submitButton");
 const deleteModal = new bootstrap.Modal(document.getElementById("deleteModal"));
-const deleteButtons = document.getElementsByClassName("btn-delete");
+const deleteButtons = document.getElementsByClassName("deleteButtonComment");
 const deleteConfirm = document.getElementById("deleteConfirm");
 
 /**
@@ -43,3 +45,5 @@ for (let button of deleteButtons) {
     deleteModal.show();
   });
 }
+
+});

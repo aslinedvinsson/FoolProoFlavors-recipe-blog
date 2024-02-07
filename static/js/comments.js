@@ -1,3 +1,5 @@
+
+document.addEventListener("DOMContentLoaded", function() {
 const editButtons = document.getElementsByClassName("updateButtonComment");
 const commentText = document.getElementById("id_body");
 const commentForm = document.getElementById("commentForm");
@@ -43,3 +45,5 @@ for (let button of deleteButtons) {
     deleteModal.show();
   });
 }
+
+});
