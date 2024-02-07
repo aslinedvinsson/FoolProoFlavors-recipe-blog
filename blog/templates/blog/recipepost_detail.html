@@ -52,7 +52,7 @@
     data-update_url="{% url 'update_recipe' slug=recipepost.slug %}">Update
     Recipe</button>
   <!--<button class="btn btn-delete" data-recipe_id="{{ recipepost.id }}" data-delete_url="{% url 'delete_recipe' slug=recipepost.slug %}">Delete Recipe</button>-->
-  <button class="btn btn-delete" data-recipepost_id="{{ recipepost.id }}"
+  <button class="btn btn-delete-recipe" data-recipepost_id="{{ recipepost.id }}"
     data-recipepost_slug="{{ recipepost.slug }}">Delete Recipe</button>
   {% endif %}
 
@@ -76,7 +76,7 @@
           <button type="button" class="btn btn-secondary"
             data-bs-dismiss="modal">Close</button>
           <a id="deleteRecipeConfirm" href="#" class="btn
-        btn-danger">Delete</a>
+        btn-danger-recipe">Delete</a>
         </div>
       </div>
     </div>
@@ -140,7 +140,7 @@
           </p>
           {% endif %}
           {% if user.is_authenticated and comment.user == user %}
-          <button class="btn btn-delete"
+          <button class="btn btn-delete-comment"
             comment_id="{{ comment.id }}">Delete</button>
 
             <button class="btn btn-edit-comment"
@@ -194,7 +194,7 @@
         <button type="button" class="btn btn-secondary"
           data-bs-dismiss="modal">Close</button>
         <a id="deleteConfirm" href="#" class="btn
-          btn-danger">Delete</a>
+          btn-danger-comment">Delete</a>
       </div>
     </div>
   </div>

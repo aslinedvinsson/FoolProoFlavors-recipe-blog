@@ -1,6 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import User
-from djrichtextfield.models import RichTextField
+#from djrichtextfield.models import RichTextField
 from django_resized import ResizedImageField
 from cloudinary.models import CloudinaryField
 
@@ -35,8 +35,8 @@ class RecipePost(models.Model):
     title = models.CharField(max_length=200, null=False, blank=False)
     slug = models.SlugField(max_length=200, unique=True)
     excerpt = models.TextField(blank=True)
-    ingredients = RichTextField(max_length=10000, null=False, blank=False)
-    instructions = RichTextField(max_length=10000, null=False, blank=False)
+    ingredients = models.TextField(max_length=10000, null=False, blank=False)
+    instructions = models.TextField(max_length=10000, null=False, blank=False)
     created_on = models.DateTimeField(auto_now_add=True)
     status = models.IntegerField(choices=STATUS, default=0)
     updated_on = models.DateTimeField(auto_now=True)
