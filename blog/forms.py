@@ -1,8 +1,9 @@
 from django import forms
+from django_summernote.widgets import SummernoteWidget
 from .models import Comment
 from .models import RecipeRating
 from .models import RecipePost
-from PIL import Image
+
 
 
 
@@ -31,6 +32,10 @@ class RecipePostForm(forms.ModelForm):
     class Meta:
         model = RecipePost
         fields = ['title', 'excerpt', 'ingredients', 'instructions', 'meal_type', 'effort', 'food_image', 'image_alt']
+        widgets = {
+            'ingredients': SummernoteWidget(),
+            'instructions': SummernoteWidget(),
+        }
 
     #def __init__(self, *args, **kwargs):
      #   super(RecipePostForm, self).__init__(*args, **kwargs)
