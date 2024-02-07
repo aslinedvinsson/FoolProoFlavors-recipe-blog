@@ -2,6 +2,8 @@ body {
     background-color: #F9FAFC;
 }
 
+
+
 .brand {
     font-family: Lato, sans-serif;
     font-size: 1.4rem;
@@ -51,7 +53,7 @@ body {
     height: auto;
 }
 
-.author {
+.user {
     color: white;
     margin: 4px;
     text-transform: uppercase;
@@ -88,6 +90,11 @@ body {
     color: white;
 }
 
+.form_container {
+    display: flex;
+    justify-content: center!important;
+    flex-wrap: wrap;
+}
 
 .profile-image {
     width: 75%;
@@ -113,6 +120,8 @@ body {
     font-size: 2.5rem;
     font-weight: 500;
 }
+
+
 
 .btn-signup,
 .btn-edit {

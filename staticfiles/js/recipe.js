@@ -1,5 +1,5 @@
 const updateRecipeButtons = document.getElementsByClassName("updateButtonRecipe");
-const recipePostForm = document.getElementById("recipePostForm");
+const recipePostForm = document.getElementById("recipepost_form");
 console.log("recipePostForm:", recipePostForm);
 const deleteRecipeButtons = document.getElementsByClassName("deleteButtonRecipe");
 const deleteRecipeModal = new bootstrap.Modal(document.getElementById("deleteRecipeModal"));
