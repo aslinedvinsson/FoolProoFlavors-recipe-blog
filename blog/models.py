@@ -65,7 +65,7 @@ class Comment(models.Model):
     recipepost = models.ForeignKey(
         RecipePost, on_delete=models.CASCADE, related_name="comments")
     user = models.ForeignKey(
-        User, on_delete=models.CASCADE, related_name="commenter")
+        User, on_delete=models.CASCADE, related_name="user")
     body = models.TextField()
     approved = models.BooleanField(default=False)
     created_on = models.DateTimeField(auto_now_add=True)

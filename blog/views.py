@@ -199,7 +199,7 @@ class UpdateRecipe(UpdateView):
     model = RecipePost
     form_class = RecipePostForm
     template_name = 'blog/update_recipe.html'
-    #success_url = reverse_lazy('recipepost_detail')
+
 
     def get_success_url(self):
         return reverse_lazy('recipepost_detail', kwargs={'slug': self.object.slug})
