@@ -34,6 +34,11 @@ body {
     background-color: transparent;
 }
 
+.card-img-top {
+    height: 15vw;
+    object-fit: cover;
+}
+
 .image-container {
     position: relative;
 }
