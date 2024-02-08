@@ -1,25 +1,85 @@
 body {
-    background-color:white;
+    background-color: #F9FAFC;
 }
-
-
 
 .brand {
     font-family: Lato, sans-serif;
-    font-size: 1.4rem;
+    font-size: 3rem;
     font-weight: 700;
     color: #4A4A4F;
 }
+/*
+.red-o {
+    color: #E84610;
+}
 
+.thin {
+    font-weight: 300;
+}
+
+.light-bg {
+    background-color: #fff;
+}
+
+.dark-bg {
+    background-color: #445261;
+}
+*/
 .main-bg {
     background-color: #fefefe;
 }
+/*
+.custom-navbar {
+
+    padding-top: 1%;
+    padding-bottom: 1%;
+}
+*/
+.brand {
+    color: red !important;
+}
+
+#navbarText {
+
+}
+
+.hero-container {
+    position: relative;
+    text-align: center;
+}
 
 
+
+.hero {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+.hero-text {
+    position: absolute;
+    color: red;
+    padding: 5%;
+    text-align: left;
+    top: 10%;
+}
+
+.footer {
+    background-color: #FF0000;
+}
+
+.wht-text {
+    color: white;
+}
 
 .card {
     border: none;
     background-color: transparent;
+}
+
+.card-img-top {
+    height: 15vw;
+    object-fit: cover;
 }
 /*
 .image-container {
@@ -33,18 +93,18 @@ body {
     left: -2px;
     background-color: #188181;
 }
-
+*/
 .scale {
     width: 100%;
     height: auto;
 }
-*/
+/*
 .user {
     color: white;
     margin: 4px;
     text-transform: uppercase;
 }
-
+*/
 .masthead {
     margin-top: 10px;
     position: relative;
@@ -76,22 +136,22 @@ body {
     color: white;
 }
 
-
 /*
 .profile-image {
     width: 75%;
 }
-
-.post-link {
+*/
+.recipepost-link {
     text-decoration: none;
     color: #445261;
 }
 
-.post-link:hover,
+.recipepost-link:hover,
 .page-link {
-    color: #E84610;
+    color: red;
 }
-*/
+
+
 .recipepost-title {
     margin-top: 10%;
     font-size: 8rem;
@@ -101,6 +161,17 @@ body {
 .recipepost-subtitle {
     font-size: 2.5rem;
     font-weight: 500;
+}
+
+.pagination li {
+    margin: 0 5px;
+
+    color: pink;
+}
+
+.pagination .page-link {
+    border: 1px solid;
+    border-radius: 5px;
 }
 /*
 .btn-signup,
