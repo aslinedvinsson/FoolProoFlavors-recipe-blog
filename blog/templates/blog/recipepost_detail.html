@@ -49,11 +49,11 @@
   <!-- Edit and delete recipe -->
 
   {% if user.is_authenticated and recipepost.user == user %}
-  <button id="updateButtonRecipe" class="btn btn-edit updateButtonRecipe"
+  <button id="updateButtonRecipe" class="btn btn-primary updateButtonRecipe"
     data-recipe_id="{{ recipepost.id }}"
     data-update_url="{% url 'update_recipe' slug=recipepost.slug %}">Update
     Recipe</button>
-  <button class="btn btn-delete deleteButtonRecipe"
+  <button class="btn btn-danger deleteButtonRecipe"
     data-recipepost_id="{{ recipepost.id }}"
     data-recipepost_slug="{{ recipepost.slug }}">Delete Recipe</button>
   {% endif %}
@@ -105,7 +105,7 @@
           {% csrf_token %}
 
           <button id="submitRatingButton" type="submit"
-            class="btn btn-signup btn-lg">Submit Rating</button>
+            class="btn btn-success btn-lg">Submit Rating</button>
         </form>
         {% else %}
         <p>Log in to leave a rating</p>
@@ -177,7 +177,7 @@
           {{ comment_form | crispy }}
           {% csrf_token %}
           <button id="submitButton" type="submit"
-            class="btn btn-signup btn-lg">Submit</button>
+            class="btn btn-success btn-lg">Submit</button>
         </form>
         {% else %}
         <p>Log in to leave a comment</p>

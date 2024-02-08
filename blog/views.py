@@ -226,7 +226,7 @@ class DeleteRecipe(DeleteView):
             return HttpResponseRedirect(reverse('home'))
         else:
             # Handle unauthorized access, maybe show an error page or redirect
-            messages.add_message(request, messages.ERROR, 'You can only delete your own recipes!')
+            messages.error(request, 'You can only delete your own recipes!')
             return HttpResponseRedirect(reverse('home'))
 
 

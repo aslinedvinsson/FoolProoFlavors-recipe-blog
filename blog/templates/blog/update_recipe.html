@@ -3,7 +3,11 @@
 {% block content %}
 {% load static %}
 {% load crispy_forms_tags %}
-  <h2>Update Recipe</h2>
+<header class="text-center">
+<h2>Update Recipe</h2>
+</header>
+<div class="d-flex flex-wrap justify-content-center">
+
   <form method="post" id="recipePostForm" enctype="multipart/form-data">
     {% csrf_token %}
     {% if form.errors %}
@@ -19,12 +23,12 @@
         {% if existing_image_public_id %}
         <p>Current Image: {{ existing_image_public_id }}</p>
     {% endif %}
-      <div class="text-center">
+      <div class="text-center mt-2">
         <button type="submit" class="btn btn-primary mt-2">Update Recipe</button>
     </div>
     </form>
 {% endblock %}
-
+</div>
 {% block extras %}
 <script src="{% static 'js/recipe.js' %}"></script>
 {% endblock %}
