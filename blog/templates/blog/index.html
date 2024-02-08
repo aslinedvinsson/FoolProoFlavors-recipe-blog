@@ -4,14 +4,26 @@
 {% block content %}
 
 <!-- index.html content starts here -->
+<!-- Hero Section -->
+{% if is_paginated and page_obj.number == 1 %}
 <div class="container-fluid">
+    <div class="row">
+        <div class="col-12 hero-container">
+            <img class="hero" src="{% static 'images/hero.jpg' %}" alt="hero image food plate">
+            <div class="hero-text">
+                <h1>Easy-to-Follow Recipes <br>to Rescue Your Dinner Routine <br> on Bored Days</h1>
+            </div>
+        </div>
+    </div>
+</div>
+{% endif %}
     <div class="row">
 
         <!-- Blog Entries Column -->
         <div class="col-12 mt-3 left">
             <div class="row">
                 {% for recipepost in recipepost_list %}
-                <div class="col-md-4">
+                <div class="col-md-6">
                     <div class="card mb-4">
                         <div class="card-body">
                             <div class="image-container">
@@ -34,8 +46,11 @@
                                 <h2 class="card-title">{{ recipepost.title }}
                                 </h2>
                                 <p class="card-text">{{ recipepost.excerpt | safe}}
-                                </p>
-                            </a>
+                                </p> </a>
+                                <br>
+                                <p class="card-text">Meal type: {{ recipepost.get_meal_type_display | safe }}</p>
+                                <p class="card-text">Effort: {{ recipepost.get_effort_display | safe }}</p>
+
 
                             <hr />
                             <p class="card-text text-muted h6">
@@ -44,7 +59,7 @@
                         </div>
                     </div>
                 </div>
-                {% if forloop.counter|divisibleby:3 %}
+                {% if forloop.counter|divisibleby:2 %}
             </div>
             <div class="row">
                 {% endif %}
