@@ -8,7 +8,7 @@ from django.urls import reverse_lazy
 from django.utils.text import slugify
 from django.core.exceptions import PermissionDenied
 from .models import RecipePost, Comment, RecipeRating
-from .forms import CommentForm, RecipePostForm #RatingForm,
+from .forms import CommentForm, RecipePostForm, RatingForm
 import cloudinary
 
 
@@ -29,6 +29,7 @@ def recipepost_detail(request, slug):
     **Template:**
 
     :template:`blog/recipepost_detail.html`
+    """
 
     queryset = RecipePost.objects.filter(status=1)
     recipepost = get_object_or_404(queryset, slug=slug)
@@ -40,7 +41,8 @@ def recipepost_detail(request, slug):
     comment_form = CommentForm()
 
     if request.method == "POST":
-        if 'comment_form' in request.POST:
+        print(request.POST)
+        if 'body' in request.POST:
             comment_form = CommentForm(data=request.POST)
             if comment_form.is_valid():
                 comment = comment_form.save(commit=False)
@@ -51,9 +53,10 @@ def recipepost_detail(request, slug):
                 'Comment submitted and awaiting approval')
 
 
-        elif 'rating_form' in request.POST:
+        elif 'reciperating' in request.POST:
             rating_form = RatingForm(data=request.POST)
             if rating_form.is_valid():
+                print('form is valid')
                 reciperating = rating_form.cleaned_data['reciperating']
 
                 # Prevent users from rating their own recipes
@@ -67,8 +70,8 @@ def recipepost_detail(request, slug):
                         existing_rating.save()
                     else:
                         RecipeRating.objects.create(user=request.user, recipepost=recipepost, reciperating=reciperating)
-
-                    messages.success(request, 'Rating saved successfully')
+                    messages.add_message(request, messages.SUCCESS, 'Rating saved successfully')
+                    return redirect(reverse('recipepost_detail', kwargs={'slug': slug}))
 
     # Calculate the average rating
     average_rating = RecipeRating.objects.filter(recipepost=recipepost).aggregate(Avg('reciperating'))['reciperating__avg'] or 0
@@ -87,36 +90,6 @@ def recipepost_detail(request, slug):
 
         },
     )
-    """
-    queryset = RecipePost.objects.filter(status=1)
-    recipepost = get_object_or_404(queryset, slug=slug)
-    comments = recipepost.comments.all().order_by("-created_on")
-    comment_count = recipepost.comments.filter(approved=True).count()
-    if request.method == "POST":
-        comment_form = CommentForm(data=request.POST)
-        if comment_form.is_valid():
-            comment = comment_form.save(commit=False)
-            comment.user = request.user
-            comment.recipepost = recipepost
-            comment.save()
-            messages.add_message(
-                request, messages.SUCCESS,
-                'Comment submitted and awaiting approval'
-            )
-
-    comment_form = CommentForm()
-
-    return render(
-        request,
-        "blog/recipepost_detail.html",
-        {
-            "recipepost": recipepost,
-            "comments": comments,
-            "comment_count": comment_count,
-            "comment_form": comment_form
-        },
-    )
-
 
 def comment_edit(request, slug, comment_id):
     """
@@ -138,7 +111,7 @@ def comment_edit(request, slug, comment_id):
         else:
             messages.add_message(request, messages.ERROR, 'Error updating comment!')
 
-    return HttpResponseRedirect(reverse('recipepost_detail', args=[slug]))
+    return HttpResponseRedirect(reverse('din aktuella sida', args=[slug]))
 
 def comment_delete(request, slug, comment_id):
     """
@@ -156,7 +129,7 @@ def comment_delete(request, slug, comment_id):
 
     return HttpResponseRedirect(reverse('recipepost_detail', args=[slug]))
 
-"""
+
 def rate_recipe(request, slug):
     if request.method == 'POST' and 'reciperating' in request.POST:
         rating_form = RatingForm(request.POST)
@@ -182,7 +155,7 @@ def rate_recipe(request, slug):
 
     # Redirect back if the request method is not POST
     return HttpResponseRedirect(reverse('recipepost_detail', args=[slug]))
-"""
+
 
 class AddRecipe(CreateView):
     model = RecipePost

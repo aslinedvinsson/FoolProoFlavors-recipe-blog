@@ -24,7 +24,7 @@
     <div class="col card mb-4  mt-3 left  top">
       <div class="card-body">
         <!-- The recipepost content goes inside the card-text. -->
-        <!-- Use the | safe filter inside the template tags -->
+
         <article class="card-text">
           <h2>Ingredients</h2>
           {{ recipepost.ingredients | safe }}
@@ -34,10 +34,12 @@
       </div>
     </div>
   </div>
+
+  <!--Average rating-->
   <div class="row">
     <div class="col-12">
       <strong class="text-secondary">
-        <p>Rating: {{ average_rating|default:0 }}/10</p>
+        <p>Rating: {{ average_rating|floatformat:1 }}/10</p>
       </strong>
     </div>
     <div class="col-12">
@@ -51,7 +53,8 @@
     data-recipe_id="{{ recipepost.id }}"
     data-update_url="{% url 'update_recipe' slug=recipepost.slug %}">Update
     Recipe</button>
-  <button class="btn btn-delete deleteButtonRecipe" data-recipepost_id="{{ recipepost.id }}"
+  <button class="btn btn-delete deleteButtonRecipe"
+    data-recipepost_id="{{ recipepost.id }}"
     data-recipepost_slug="{{ recipepost.slug }}">Delete Recipe</button>
   {% endif %}
 
@@ -81,26 +84,35 @@
     </div>
   </div>
 
-  <!-- Creating New Rating
-<div class="row">
-  <div class="col-md-4 card mb-4 mt-3">
+  <!-- Creating New Rating-->
+  <div class="row">
+    <div class="col-md-4 card mb-4 mt-3">
       <div class="card-body">
-          {% if user.is_authenticated %}
-          <h3>Leave a rating:</h3>
-          <form id="ratingForm" method="post" style="margin-top: 1.3em;">
-              {% csrf_token %}
+        {% if user.is_authenticated %}
+        <h3>Leave a rating:</h3>
 
-             Include the input field for rating
-             {# {{ rating_form.reciperating|as_crispy_field }}#}
-
-              <button id="submitRatingButton" type="submit" class="btn btn-signup btn-lg">Submit Rating</button>
-          </form>
-          {% else %}
-          <p>Log in to leave a rating</p>
+        <form id="ratingForm" method="post" style="margin-top: 1.3em;">
+          {% if rating_form.errors %}
+          <div class="form-errors">
+            {% for field in rating_form %}
+            {% for error in field.errors %}
+            <div>{{ error }}</div>
+            {% endfor %}
+            {% endfor %}
+          </div>
           {% endif %}
+          {{ rating_form|crispy }}
+          {% csrf_token %}
+
+          <button id="submitRatingButton" type="submit"
+            class="btn btn-signup btn-lg">Submit Rating</button>
+        </form>
+        {% else %}
+        <p>Log in to leave a rating</p>
+        {% endif %}
       </div>
+    </div>
   </div>
-</div>-->
 
   <!-- Displaying count of comments -->
   <div class="row">
@@ -142,7 +154,7 @@
           <button class="btn btn-delete deleteButtonComment"
             comment_id="{{ comment.id }}">Delete</button>
 
-            <button class="btn btn-edit updateButtonComment"
+          <button class="btn btn-edit updateButtonComment"
             comment_id="{{ comment.id }}">Edit</button>
 
           {% endif %}

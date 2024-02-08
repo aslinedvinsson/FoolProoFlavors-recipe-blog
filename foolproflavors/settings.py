@@ -65,7 +65,6 @@ INSTALLED_APPS = [
     'crispy_bootstrap5',
     'cloudinary',
     'cloudinary_storage',
-    #'djrichtextfield'
 ]
 
 SITE_ID = 1
@@ -74,22 +73,6 @@ LOGOUT_REDIRECT_URL = '/'
 
 CRISPY_ALLOWED_TEMPLATE_PACKS = "bootstrap5"
 CRISPY_TEMPLATE_PACK = "bootstrap5"
-
-#Django Recipe Sharing Tutorial
-"""
-DJRICHTEXTFIELD_CONFIG = {
-    'js': ['//cdn.ckeditor.com/4.14.0/standard/ckeditor.js'],
-    'init_template': 'djrichtextfield/init/ckeditor.js',
-    'settings': {
-        'toolbar': [
-            ['Format', 'Bold', 'Italic', 'Underline'],
-            ['NumberedList', 'BulletedList'], ['Undo', 'Redo'],
-            ['Maximize']
-        ],
-        'format_tags': 'p, h1, h2, h3'
-    }
-}
-"""
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -190,8 +173,8 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
 #Django Recipe Sharing Tutorial
 #Cloudinary settings
-DEFAULT_FILE_STORAGE ='cloudinary_storage.storage.MediaCloudinaryStorage'
-CLOUDINARY_URL = os.environ.get('CLOUDINARY_URL')
+#DEFAULT_FILE_STORAGE ='cloudinary_storage.storage.MediaCloudinaryStorage'
+#CLOUDINARY_URL = os.environ.get('CLOUDINARY_URL')
 
 
 # Default primary key field type

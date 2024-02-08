@@ -1,7 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import User
 #from djrichtextfield.models import RichTextField
-from django_resized import ResizedImageField
+#from django_resized import ResizedImageField
 from cloudinary.models import CloudinaryField
 
 STATUS = ((0, "Draft"), (1, "Published"))
@@ -23,7 +23,9 @@ EFFORT = (("bad_day_comfort_food", "Bad day comfort food"),
 ("trying_a_healthy_day", "Trying a healthy day"), ("im_in_a_hurry", "I'm in a hurry"),
 ("i_have_time_but_no_brains", "I have time but no brains"), ("to_far_until_payday", "To far until payday"))
 
-#Inspired by the CodeInstitute Walkthrough 'I think, therefor I blog' and Django Recipe Sharing Tutorial
+# The RecipePost model is a partly customed model through the combination of
+# the CodeInstitute Walkthrough 'I think, therefor I blog' and Django
+# Recipe Sharing Tutorial
 class RecipePost(models.Model):
     """
     A model to create and manage a recipe post related to :model:`auth.User`
@@ -60,7 +62,8 @@ class RecipePost(models.Model):
     def __str__(self):
         return f'{self.title} | added by {self.user}'
 
-
+# The comment model is taken from the CodeInstitute Walkthrough
+# 'I think, therefor I blog'
 class Comment(models.Model):
     recipepost = models.ForeignKey(
         RecipePost, on_delete=models.CASCADE, related_name="comments")
@@ -76,7 +79,7 @@ class Comment(models.Model):
     def __str__(self):
         return f'Comment {self.body} | added by {self.user}'
 
-
+# custom model
 class RecipeRating(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     recipepost = models.ForeignKey(RecipePost, on_delete=models.CASCADE)
