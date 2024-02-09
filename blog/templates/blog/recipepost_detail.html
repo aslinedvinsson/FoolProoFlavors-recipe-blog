@@ -7,9 +7,29 @@
     <div class="row g-0">
       <div class="col-md-6 masthead-text">
         <h1 class="recipepost-title">{{ recipepost.title }}</h1>
-        <p class="recipepost-subtitle">Contributor: {{ recipepost.user }}</p>
-        <p class="recipepost-excerpt">{{ recipepost.excerpt | safe }}</p>
       </div>
+        <!--Average rating-->
+  <div class="masthead-text avg_rating">
+    <div class="container">
+      <strong>
+        <p>Rating: {{ average_rating|floatformat:1 }}/10</p>
+      </strong>
+    </div>
+
+  </div>
+  <div class="masthead-text position-absolute bottom-0 end-0 ">
+  <!-- Edit and delete recipe -->
+  {% if user.is_authenticated and recipepost.user == user %}
+  <button id="updateButtonRecipe" class="btn btn-primary update_button_recipe ms-3 mb-3"
+    data-recipe_id="{{ recipepost.id }}"
+    data-update_url="{% url 'update_recipe' slug=recipepost.slug %}">Update
+    Recipe</button>
+  <button class="btn btn-danger delete_button_recipe mb-3"
+    data-recipepost_id="{{ recipepost.id }}"
+    data-recipepost_slug="{{ recipepost.slug }}">Delete Recipe</button>
+  {% endif %}
+</div>
+  <!-- Recipe image-->
       <div class="d-none d-md-block col-md-6 masthead-image">
         <img src="{% if recipepost.food_image %}{{ recipepost.food_image.url }}
         {% else %}{% static 'images/default.jpg' %}
@@ -23,40 +43,29 @@
   <div class="row">
     <div class="col card mb-4  mt-3 left  top">
       <div class="card-body">
-        <!-- The recipepost content goes inside the card-text. -->
-
+        <!-- The recipepost content inside the card-text. -->
+        <p class="recipepost-excerpt p-4">{{ recipepost.excerpt | safe }}</p>
         <article class="card-text">
-          <h2>Ingredients</h2>
-          {{ recipepost.ingredients | safe }}
-          <h2>Instructions</h2>
-          {{ recipepost.instructions | safe }}
+
+          <div class="container mt-4">
+            <div class="border p-3">
+                <h2>Ingredients</h2>
+                <p>{{ recipepost.ingredients | safe }}</p>
+            </div>
+        </div>
+        <div class="container mt-4">
+          <div class="border p-3">
+              <h2>Instructions</h2>
+              <p>{{ recipepost.instructions | safe }}</p>
+          </div>
+      </div>
+      <br>
+          <p class="recipepost-contributor p-4 text-end">Contributor: {{ recipepost.user }}</p>
         </article>
       </div>
     </div>
   </div>
 
-  <!--Average rating-->
-  <div class="row">
-    <div class="col-12">
-      <strong class="text-secondary">
-        <p>Rating: {{ average_rating|floatformat:1 }}/10</p>
-      </strong>
-    </div>
-    <div class="col-12">
-      <hr>
-    </div>
-  </div>
-  <!-- Edit and delete recipe -->
-
-  {% if user.is_authenticated and recipepost.user == user %}
-  <button id="updateButtonRecipe" class="btn btn-primary updateButtonRecipe"
-    data-recipe_id="{{ recipepost.id }}"
-    data-update_url="{% url 'update_recipe' slug=recipepost.slug %}">Update
-    Recipe</button>
-  <button class="btn btn-danger deleteButtonRecipe"
-    data-recipepost_id="{{ recipepost.id }}"
-    data-recipepost_slug="{{ recipepost.slug }}">Delete Recipe</button>
-  {% endif %}
 
 
   <!-- Delete confirmation modal -->
@@ -116,13 +125,14 @@
 
   <!-- Displaying count of comments -->
   <div class="row">
+
+    <div class="col-12">
+      <hr>
+    </div>
     <div class="col-12">
       <strong class="text-secondary">
         <i class="far fa-comments"></i> {{ comment_count }}
       </strong>
-    </div>
-    <div class="col-12">
-      <hr>
     </div>
   </div>
   <!-- Displaying Comments -->
@@ -130,8 +140,7 @@
     <div class="col-md-8 card mb-4  mt-3 ">
       <h3>Comments:</h3>
       <div class="card-body">
-        <!-- We want a for loop inside the empty control tags
-          to iterate through each comment in comments -->
+
         {% for comment in comments %}
         <div class="p-2 comments
           {% if not comment.approved and comment.user == user %}
@@ -216,4 +225,5 @@
 
 <script src="{% static 'js/comments.js' %}"></script>
 <script src="{% static 'js/recipe.js' %}"></script>
+
 {% endblock extras %}
