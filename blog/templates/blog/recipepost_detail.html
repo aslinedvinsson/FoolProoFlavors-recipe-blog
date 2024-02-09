@@ -8,27 +8,28 @@
       <div class="col-md-6 masthead-text">
         <h1 class="recipepost-title">{{ recipepost.title }}</h1>
       </div>
-        <!--Average rating-->
-  <div class="masthead-text avg_rating">
-    <div class="container">
-      <strong>
-        <p>Rating: {{ average_rating|floatformat:1 }}/10</p>
-      </strong>
-    </div>
-  </div>
-  <div class="masthead-text position-absolute bottom-0 end-0 ">
-  <!-- Update and delete recipe -->
-  {% if user.is_authenticated and recipepost.user == user %}
-  <button id="updateButtonRecipe" class="btn btn-primary update_button_recipe ms-3 mb-3"
-    data-recipe_id="{{ recipepost.id }}"
-    data-update_url="{% url 'update_recipe' slug=recipepost.slug %}">Update
-    Recipe</button>
-  <button class="btn btn-danger delete_button_recipe mb-3"
-    data-recipepost_id="{{ recipepost.id }}"
-    data-recipepost_slug="{{ recipepost.slug }}">Delete Recipe</button>
-  {% endif %}
-</div>
-  <!-- Recipe image-->
+      <!--Average rating-->
+      <div class="masthead-text avg_rating">
+        <div class="container">
+          <strong>
+            <p>Rating: {{ average_rating|floatformat:1 }}/10</p>
+          </strong>
+        </div>
+      </div>
+      <div class="masthead-text position-absolute bottom-0 end-0 ">
+        <!-- Update and delete recipe -->
+        {% if user.is_authenticated and recipepost.user == user %}
+        <button id="updateButtonRecipe"
+          class="btn btn-primary update_button_recipe ms-3 mb-3"
+          data-recipe_id="{{ recipepost.id }}"
+          data-update_url="{% url 'update_recipe' slug=recipepost.slug %}">Update
+          Recipe</button>
+        <button class="btn btn-danger delete_button_recipe mb-3"
+          data-recipepost_id="{{ recipepost.id }}"
+          data-recipepost_slug="{{ recipepost.slug }}">Delete Recipe</button>
+        {% endif %}
+      </div>
+      <!-- Recipe image-->
       <div class="d-none d-md-block col-md-6 masthead-image">
         <img src="{% if recipepost.food_image %}{{ recipepost.food_image.url }}
         {% else %}{% static 'images/default.jpg' %}
@@ -46,18 +47,19 @@
         <article class="card-text">
           <div class="container mt-4">
             <div class="border p-3">
-                <h2>Ingredients</h2>
-                <p>{{ recipepost.ingredients | safe }}</p>
+              <h2>Ingredients</h2>
+              <p>{{ recipepost.ingredients | safe }}</p>
             </div>
-        </div>
-        <div class="container mt-4">
-          <div class="border p-3">
+          </div>
+          <div class="container mt-4">
+            <div class="border p-3">
               <h2>Instructions</h2>
               <p>{{ recipepost.instructions | safe }}</p>
+            </div>
           </div>
-      </div>
-      <br>
-          <p class="recipepost-contributor p-4 text-end">Contributor: {{ recipepost.user }}</p>
+          <br>
+          <p class="recipepost-contributor p-4 text-end">Contributor:
+            {{ recipepost.user }}</p>
         </article>
       </div>
     </div>
