@@ -165,8 +165,23 @@ class AddRecipe(CreateView):
     success_url = reverse_lazy('home')
 
     def form_valid(self, form):
+        # Assign the current user to the user field of the RecipePost instance
         form.instance.user = self.request.user
+
+        # Generate a unique slug based on the title
+        slug = slugify(form.cleaned_data['title'])
+        if RecipePost.objects.filter(slug=slug).exists():
+            messages.error(self.request,
+            'This recipe name already exists. Please choose a different one.')
+            return self.form_invalid(form)
+
+        # If slug is unique, proceed with form validation
+        messages.success(self.request,
+        'Recipe submitted and awaiting approval!')
         return super(AddRecipe, self).form_valid(form)
+
+    def form_invalid(self, form):
+        return super(AddRecipe, self).form_invalid(form)
 
 
 class UpdateRecipe(UpdateView):
