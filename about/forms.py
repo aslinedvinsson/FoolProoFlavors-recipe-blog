@@ -1,3 +1,4 @@
+# Inspired by the CodeInstitute Walkthrough 'I think, therefor I blog'
 from django import forms
 from .models import ContactRequest
 

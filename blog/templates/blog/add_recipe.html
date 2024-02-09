@@ -3,31 +3,28 @@
 {% block content %}
 {% load static %}
 {% load crispy_forms_tags %}
+{% if user.is_authenticated %}
 <div class="recipform_container">
 <header class="text-center">
 <h2>Add Recipe</h2>
 </header>
 <div class="d-flex flex-wrap justify-content-center">
-
-  <!--{% if user.is_authenticated %}-->
   <form method="post" id="recipepost_form" enctype="multipart/form-data">
     {% csrf_token %}
-
-
     {% if form.errors %}
             <div class="alert alert-danger">
                 <strong>Error!</strong> Please correct the errors below.
                 {{ form.errors }}
             </div>
         {% endif %}
-
       {{ form | crispy }}
       <div class="text-center mt-2">
         <button type="submit" class="btn btn-primary mb-4">Create Recipe</button>
     </div>
     </form>
-
- <!-- {% endif %}-->
+    {% else %}
+    <p>Log in to leave a rating</p>
+ {% endif %}
 </div>
 </div>
 {% endblock %}

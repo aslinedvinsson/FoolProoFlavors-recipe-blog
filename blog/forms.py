@@ -7,7 +7,7 @@ from crispy_forms.helper import FormHelper
 from crispy_forms.layout import Layout, Field
 
 
-
+# Code CommentForm taken from CodeInstitute Walkthrough 'I think, therefor I blog'
 class CommentForm(forms.ModelForm):
     body = forms.CharField(label='', required=False, widget=forms.Textarea(
         attrs={'placeholder': 'Enter your comment here...'}))

@@ -15,10 +15,9 @@
         <p>Rating: {{ average_rating|floatformat:1 }}/10</p>
       </strong>
     </div>
-
   </div>
   <div class="masthead-text position-absolute bottom-0 end-0 ">
-  <!-- Edit and delete recipe -->
+  <!-- Update and delete recipe -->
   {% if user.is_authenticated and recipepost.user == user %}
   <button id="updateButtonRecipe" class="btn btn-primary update_button_recipe ms-3 mb-3"
     data-recipe_id="{{ recipepost.id }}"
@@ -38,7 +37,6 @@
     </div>
   </div>
 </div>
-
 <div class="container">
   <div class="row">
     <div class="col card mb-4  mt-3 left  top">
@@ -46,7 +44,6 @@
         <!-- The recipepost content inside the card-text. -->
         <p class="recipepost-excerpt p-4">{{ recipepost.excerpt | safe }}</p>
         <article class="card-text">
-
           <div class="container mt-4">
             <div class="border p-3">
                 <h2>Ingredients</h2>
@@ -66,9 +63,8 @@
     </div>
   </div>
 
-
-
-  <!-- Delete confirmation modal -->
+  <!-- Delete confirmation modal Code taken from the CodeInstitute Walkthrough
+    'I think, therefor I blog'-->
   <div class="modal fade" id="deleteRecipeModal" tabindex="-1"
     aria-labelledby="deleteRecipeModalLabel" aria-hidden="true">
     <div class="modal-dialog">
@@ -92,14 +88,12 @@
       </div>
     </div>
   </div>
-
   <!-- Creating New Rating-->
   <div class="row">
     <div class="col-md-4 card mb-4 mt-3">
       <div class="card-body">
         {% if user.is_authenticated %}
         <h3>Leave a rating:</h3>
-
         <form id="ratingForm" method="post" style="margin-top: 1.3em;">
           {% if rating_form.errors %}
           <div class="form-errors">
@@ -112,7 +106,6 @@
           {% endif %}
           {{ rating_form|crispy }}
           {% csrf_token %}
-
           <button id="submitRatingButton" type="submit"
             class="btn btn-success btn-lg">Submit Rating</button>
         </form>
@@ -123,9 +116,9 @@
     </div>
   </div>
 
-  <!-- Displaying count of comments -->
+  <!-- Displaying count of comments Code taken from the CodeInstitute
+    Walkthrough 'I think, therefor I blog-->
   <div class="row">
-
     <div class="col-12">
       <hr>
     </div>
@@ -135,12 +128,12 @@
       </strong>
     </div>
   </div>
-  <!-- Displaying Comments -->
+  <!-- Displaying Comments Code taken from the CodeInstitute Walkthrough
+    'I think, therefor I blog-->
   <div class="row">
     <div class="col-md-8 card mb-4  mt-3 ">
       <h3>Comments:</h3>
       <div class="card-body">
-
         {% for comment in comments %}
         <div class="p-2 comments
           {% if not comment.approved and comment.user == user %}
@@ -162,17 +155,16 @@
           {% if user.is_authenticated and comment.user == user %}
           <button class="btn btn-delete deleteButtonComment"
             comment_id="{{ comment.id }}">Delete</button>
-
           <button class="btn btn-edit updateButtonComment"
             comment_id="{{ comment.id }}">Edit</button>
-
           {% endif %}
         </div>
-        <!-- Our for loop ends here -->
+        <!-- For loop ends here -->
         {% endfor %}
       </div>
     </div>
-    <!-- Creating New Comments -->
+    <!-- Creating New Comments Code taken from the CodeInstitute Walkthrough
+    'I think, therefor I blog-->
     <div class="col-md-4 card mb-4 mt-3">
       <div class="card-body">
         {% if user.is_authenticated %}
@@ -186,12 +178,12 @@
         {% else %}
         <p>Log in to leave a comment</p>
         {% endif %}
-
       </div>
     </div>
   </div>
 </div>
-<!-- Delete confirmation modal -->
+<!-- Delete confirmation modal Code taken from the CodeInstitute Walkthrough
+    'I think, therefor I blog-->
 <div class="modal fade" id="deleteModal" tabindex="-1"
   aria-labelledby="deleteModalLabel" aria-hidden="true">
   <div class="modal-dialog">
@@ -215,7 +207,6 @@
   </div>
 </div>
 {% endblock content %}
-
 {% block extras %}
 {% load static %}
 

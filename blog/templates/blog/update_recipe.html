@@ -4,34 +4,30 @@
 {% load static %}
 {% load crispy_forms_tags %}
 <div class="recipform_container">
-<header class="text-center">
-<h2>Update Recipe</h2>
-</header>
-<div class="d-flex flex-wrap justify-content-center">
-
-  <form method="post" id="recipePostForm" enctype="multipart/form-data">
-    {% csrf_token %}
-    {% if form.errors %}
-            <div class="alert alert-danger">
-                <strong>Error!</strong> Please correct the errors below.
-                {{ form.errors }}
-            </div>
-        {% endif %}
-
-
-        {{ form|crispy }}
-
-        {% if existing_image_public_id %}
-        <p>Current Image: {{ existing_image_public_id }}</p>
-    {% endif %}
+  <header class="text-center">
+    <h2>Update Recipe</h2>
+  </header>
+  <div class="d-flex flex-wrap justify-content-center">
+    <form method="post" id="recipePostForm" enctype="multipart/form-data">
+      {% csrf_token %}
+      {% if form.errors %}
+      <div class="alert alert-danger">
+        <strong>Error!</strong> Please correct the errors below.
+        {{ form.errors }}
+      </div>
+      {% endif %}
+      {{ form|crispy }}
+      {% if existing_image_public_id %}
+      <p>Current Image: {{ existing_image_public_id }}</p>
+      {% endif %}
       <div class="text-center mt-2">
-        <button type="submit" class="btn btn-primary mt-2 mb-2">Update Recipe</button>
-    </div>
+        <button type="submit" class="btn btn-primary mt-2 mb-2">Update
+          Recipe</button>
+      </div>
     </form>
-{% endblock %}
-</div>
-{% block extras %}
-<script src="{% static 'js/recipe.js' %}"></script>
-{% endblock %}
-
+    {% endblock %}
+  </div>
+  {% block extras %}
+  <script src="{% static 'js/recipe.js' %}"></script>
+  {% endblock %}
 </div>

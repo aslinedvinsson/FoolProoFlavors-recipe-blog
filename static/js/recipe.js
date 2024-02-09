@@ -1,3 +1,5 @@
+//Code taken from by the CodeInstitute Walkthrough 'I think, therefor I blog'
+//and a little bit customized
 const updateRecipeButtons = document.getElementsByClassName("update_button_recipe");
 const recipePostForm = document.getElementById("recipePostForm");
 console.log("recipePostForm:", recipePostForm);

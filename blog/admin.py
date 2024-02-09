@@ -1,3 +1,4 @@
+# Inspired by the CodeInstitute Walkthrough 'I think, therefor I blog'
 from django.contrib import admin
 from django_summernote.admin import SummernoteModelAdmin
 from .models import RecipePost, Comment, RecipeRating

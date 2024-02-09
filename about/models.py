@@ -1,3 +1,5 @@
+# Code taken from the CodeInstitute Walkthrough 'I think, therefor I blog'
+# and slightly moified
 from django.db import models
 from cloudinary.models import CloudinaryField
 
