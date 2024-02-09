@@ -50,12 +50,7 @@
                                 <br>
                                 <p class="card-text">Meal type: {{ recipepost.get_meal_type_display | safe }}</p>
                                 <p class="card-text">Effort: {{ recipepost.get_effort_display | safe }}</p>
-
-
-                            <hr />
-                            <p class="card-text text-muted h6">
-                                {{ recipepost.created_on}}
-                            </p>
+                                <p>Rating: {{ average_rating|floatformat:1 }}/10</p>
                         </div>
                     </div>
                 </div>
