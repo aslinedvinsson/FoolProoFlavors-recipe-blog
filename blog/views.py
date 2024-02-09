@@ -48,6 +48,7 @@ def recipepost_detail(request, slug):
                 comment = comment_form.save(commit=False)
                 comment.user = request.user
                 comment.recipepost = recipepost
+                print(f"Comment User: {comment.user}, Logged In User: {request.user}")
                 comment.save()
                 messages.add_message(request, messages.SUCCESS,
                 'Comment submitted and awaiting approval')
@@ -111,7 +112,7 @@ def comment_edit(request, slug, comment_id):
         else:
             messages.add_message(request, messages.ERROR, 'Error updating comment!')
 
-    return HttpResponseRedirect(reverse('din aktuella sida', args=[slug]))
+    return HttpResponseRedirect(reverse('recipepost_detail', args=[slug]))
 
 def comment_delete(request, slug, comment_id):
     """

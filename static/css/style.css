@@ -205,6 +205,16 @@ body {
     background-color: #e4e4e4;
     padding-top: 5%;
 }
+
+/* Comments not yet approved from admin */
+.faded {
+    color: rgb(172, 175, 175);
+}
+
+.approval {
+    color: rgb(222, 146, 168);
+}
+
 /*
 .btn-signup,
 .btn-edit {
@@ -247,10 +257,5 @@ body {
     border: none;
 }
 
-.faded {
-    color: rgb(172, 175, 175);
-}
 
-.approval {
-    color: rgb(222, 146, 168);
-}
+
