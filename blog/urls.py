@@ -12,7 +12,7 @@ urlpatterns = [
          views.comment_edit, name='comment_edit'),
     path('<slug:slug>/delete_comment/<int:comment_id>',
          views.comment_delete, name='comment_delete'),
-    #path('<slug:slug>/rate/', views.rate_recipe, name='rate_recipe'),
+    path('<slug:slug>/rate/', views.rate_recipe, name='rate_recipe'),
     path('<slug:slug>/rate_recipe/', views.rate_recipe, name='rate_recipe'),
     path('update/<slug:slug>/', UpdateRecipe.as_view(), name='update_recipe'),
     path('delete_recipe/<slug:slug>/', DeleteRecipe.as_view(), name='delete_recipe'),

@@ -93,7 +93,8 @@ def recipepost_detail(request, slug):
     # Calculate the average rating
     average_rating = RecipeRating.objects.filter(recipepost=
     recipepost).aggregate(Avg('reciperating'))['reciperating__avg'] or 0
-    print(average_rating)
+
+    print("Average rating being passed to template:", average_rating)
 
     return render(
         request,
@@ -105,6 +106,7 @@ def recipepost_detail(request, slug):
             "rating_form": rating_form,
             "average_rating": average_rating,
             "comment_form": comment_form,
+
         },
     )
 

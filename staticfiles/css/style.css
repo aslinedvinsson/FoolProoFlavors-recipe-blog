@@ -120,7 +120,7 @@ body {
 
 .avg_rating {
     top: 5%;
-    left: 60%;
+    left: 50%;
     font-size: 3vw;
     text-shadow: 2px 2px 4px #000000;;
 }
@@ -163,5 +163,11 @@ body {
 
 
 
+@media only screen and (max-width: 768px) {
+    .card-img-top {
+        height: 70vw;
+
+}
 
 
+}
