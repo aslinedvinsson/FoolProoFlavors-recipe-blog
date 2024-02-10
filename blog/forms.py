@@ -7,7 +7,7 @@ from crispy_forms.helper import FormHelper
 from crispy_forms.layout import Layout, Field
 
 
-# Code CommentForm taken from CodeInstitute Walkthrough 'I think, therefor I
+# Code CommentForm inspired by CodeInstitute Walkthrough 'I think, therefor I
 # blog'
 class CommentForm(forms.ModelForm):
     """

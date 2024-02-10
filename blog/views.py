@@ -48,7 +48,7 @@ def recipepost_detail(request, slug):
     """
     queryset = RecipePost.objects.filter(status=1)
     recipepost = get_object_or_404(queryset, slug=slug)
-    comments = recipepost.comments.filter(approved=True).order_by("-created_on")
+    comments = recipepost.comments.all().order_by("-created_on")
     comment_count = recipepost.comments.filter(approved=True).count()
     rating_form = RatingForm()
     comment_form = CommentForm()

@@ -155,9 +155,9 @@
           </p>
           {% endif %}
           {% if user.is_authenticated and comment.user == user %}
-          <button class="btn btn-delete deleteButtonComment"
+          <button class="btn btn-danger deleteButtonComment"
             comment_id="{{ comment.id }}">Delete</button>
-          <button class="btn btn-edit updateButtonComment"
+          <button class="btn btn-primary updateButtonComment"
             comment_id="{{ comment.id }}">Edit</button>
           {% endif %}
         </div>
