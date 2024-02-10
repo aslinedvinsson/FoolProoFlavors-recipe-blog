@@ -1,8 +1,12 @@
-const updateRecipeButtons = document.getElementsByClassName("updateButtonRecipe");
-const recipePostForm = document.getElementById("recipepost_form");
+//Inspired by the CodeInstitute Walkthrough 'I think, therefor I blog'
+const updateRecipeButtons = document.getElementsByClassName(
+    "update_button_recipe");
+const recipePostForm = document.getElementById("recipePostForm");
 console.log("recipePostForm:", recipePostForm);
-const deleteRecipeButtons = document.getElementsByClassName("deleteButtonRecipe");
-const deleteRecipeModal = new bootstrap.Modal(document.getElementById("deleteRecipeModal"));
+const deleteRecipeButtons = document.getElementsByClassName(
+    "delete_button_recipe");
+const deleteRecipeModal = new bootstrap.Modal(document.getElementById(
+    "deleteRecipeModal"));
 const deleteRecipeConfirm = document.getElementById("deleteRecipeConfirm");
 
 /**
@@ -24,12 +28,7 @@ for (let button of updateRecipeButtons) {
          window.location.href = updateUrl;
     });
     console.log("updateRecipeButtons:", updateRecipeButtons);
-
 }
-
-
-
-
 
 /**
 * Initializes deletion functionality for the provided delete buttons.

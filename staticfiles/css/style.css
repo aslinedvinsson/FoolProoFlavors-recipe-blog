@@ -37,6 +37,7 @@ body {
 */
 .brand {
     color: red !important;
+    text-shadow: 2px 2px 4px #726868;
 }
 
 #navbarText {
@@ -129,9 +130,6 @@ body {
 
 .masthead-text {
     position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
     z-index: 200;
     color: white;
 }
@@ -153,14 +151,38 @@ body {
 
 
 .recipepost-title {
-    margin-top: 10%;
-    font-size: 8rem;
-    font-weight: 800;
+    margin-top: 20%;
+    font-size: 6rem;
+    font-weight: 700;
+    position: absolute;
+    font-size:6rem;
+    font-weight: 700;
+    text-shadow: 2px 2px 4px #000000;
 }
 
-.recipepost-subtitle {
-    font-size: 2.5rem;
-    font-weight: 500;
+.update_button_recipe {
+    margin-right: 20px;
+}
+
+.delete_button_recipe {
+}
+
+.avg_rating {
+    top: 5%;
+    left: 70%;
+    font-size: x-large;
+    text-shadow: 2px 2px 4px #000000;;
+}
+
+.recipepost-excerpt {
+    font-size: 2rem;
+    font-weight: 200;
+    font-style: italic;
+}
+
+
+.recipepost-contributor {
+
 }
 
 .pagination li {
@@ -173,6 +195,26 @@ body {
     border: 1px solid;
     border-radius: 5px;
 }
+
+.btn {
+    box-shadow: 2px 2px 4px #000000;;
+}
+
+/* Add recipe and update recipe page */
+.recipform_container {
+    background-color: #e4e4e4;
+    padding-top: 5%;
+}
+
+/* Comments not yet approved from admin */
+.faded {
+    color: rgb(172, 175, 175);
+}
+
+.approval {
+    color: rgb(222, 146, 168);
+}
+
 /*
 .btn-signup,
 .btn-edit {
@@ -215,10 +257,5 @@ body {
     border: none;
 }
 
-.faded {
-    color: rgb(172, 175, 175);
-}
 
-.approval {
-    color: rgb(222, 146, 168);
-}
+
