@@ -30,13 +30,18 @@
         {% endif %}
       </div>
       <!-- Recipe image-->
-      <div class="d-none d-md-block col-md-6 masthead-image">
-        <img src="{% if recipepost.food_image %}{{ recipepost.food_image.url }}
-        {% else %}{% static 'images/default.jpg' %}
-        {% endif %}" class="scale" alt="Recipe Image">
+      <div class="d-md-block col-md-6 masthead-image">
+        {% if "placeholder" in recipepost.food_image.url %}
+        <img src="{% static 'images/placeholder.jpg' %}"
+          alt="placeholder image">
+        {% else %}
+        <img src=" {{ recipepost.food_image.url }}"
+          alt="{{ recipepost.title }}">
+        {% endif %}
       </div>
     </div>
   </div>
+</div>
 </div>
 <div class="container">
   <div class="row">
