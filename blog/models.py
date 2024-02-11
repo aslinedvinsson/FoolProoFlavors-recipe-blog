@@ -149,6 +149,4 @@ class RecipeRating(models.Model):
     reciperating = models.IntegerField()
 
     def __str__(self):
-        return
-        f'{self.recipepost.title} | {self.user} - {self.reciperating} out of 10'
-
+        return f'{self.recipepost.title} | {self.user.user} - {self.reciperating} out of 10'
