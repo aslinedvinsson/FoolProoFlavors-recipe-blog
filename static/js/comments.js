@@ -1,5 +1,6 @@
 
 document.addEventListener("DOMContentLoaded", function() {
+  console.log("Script is running");
 const editButtons = document.getElementsByClassName("updateButtonComment");
 const commentText = document.getElementById("id_body");
 const commentForm = document.getElementById("commentForm");
@@ -7,6 +8,8 @@ const submitButton = document.getElementById("submitButton");
 const deleteModal = new bootstrap.Modal(document.getElementById("deleteModal"));
 const deleteButtons = document.getElementsByClassName("deleteButtonComment");
 const deleteConfirm = document.getElementById("deleteConfirm");
+
+
 
 /**
 * Initializes edit functionality for the provided edit buttons.
@@ -21,7 +24,7 @@ editing.
 */
 for (let button of editButtons) {
   button.addEventListener("click", (e) => {
-    let commentId = e.target.getAttribute("comment_id");
+    let commentId = e.target.getAttribute("data-comment_id");
     let commentContent = document.getElementById(`comment${commentId}`
     ).innerText;
     commentText.value = commentContent;
@@ -42,8 +45,9 @@ for (let button of editButtons) {
 */
 for (let button of deleteButtons) {
   button.addEventListener("click", (e) => {
-    let commentId = e.target.getAttribute("comment_id");
+    let commentId = e.target.getAttribute("data-comment_id");
     deleteConfirm.href = `delete_comment/${commentId}`;
+    console.log(deleteModal)
     deleteModal.show();
   });
 }

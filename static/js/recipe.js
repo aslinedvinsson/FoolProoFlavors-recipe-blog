@@ -19,16 +19,12 @@ const deleteRecipeConfirm = document.getElementById("deleteRecipeConfirm");
 
 for (let button of updateRecipeButtons) {
     button.addEventListener("click", (e) => {
-        console.log("Edit button clicked!");
-        let recipeId = e.target.getAttribute("data-recipe_id");
         let updateUrl = e.target.getAttribute("data-update_url");
-        console.log("Recipe ID:", recipeId);
-        console.log("Update URL:", updateUrl);
          // Redirect to update_recipe.html
          window.location.href = updateUrl;
     });
-    console.log("updateRecipeButtons:", updateRecipeButtons);
 }
+
 
 /**
 * Initializes deletion functionality for the provided delete buttons.
@@ -46,12 +42,10 @@ for (let button of deleteRecipeButtons) {
     button.addEventListener("click", (e) => {
         e.preventDefault();
         let recipeSlug = e.target.getAttribute("data-recipepost_slug");
-        console.log("Recipe Slug:", recipeSlug);
+        deleteRecipeConfirm.href = `/delete_recipe/${recipeSlug}/`;
         deleteRecipeModal.show();
-        window.location.href = `/delete_recipe/${recipeSlug}/`;
     });
 }
-
 
 
 

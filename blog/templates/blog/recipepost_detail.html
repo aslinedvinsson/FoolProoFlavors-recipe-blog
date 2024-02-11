@@ -11,9 +11,7 @@
       <!--Average rating-->
       <div class="masthead-text avg_rating">
         <div class="container">
-          <strong>
-            <p>Rating: {{ average_rating|floatformat:1 | safe }}/10</p>
-          </strong>
+          <p>Rating: {{ average_rating|floatformat:1 | safe }}/10</p>
         </div>
       </div>
       <div class="masthead-text position-absolute bottom-0 end-0 ">
@@ -42,7 +40,6 @@
     </div>
   </div>
 </div>
-</div>
 <div class="container">
   <div class="row">
     <div class="col card mb-4  mt-3 left  top">
@@ -53,13 +50,13 @@
           <div class="container mt-4">
             <div class="border p-3">
               <h2>Ingredients</h2>
-              <p>{{ recipepost.ingredients | safe }}</p>
+              {{ recipepost.ingredients | safe }}
             </div>
           </div>
           <div class="container mt-4">
             <div class="border p-3">
               <h2>Instructions</h2>
-              <p>{{ recipepost.instructions | safe }}</p>
+              {{ recipepost.instructions | safe }}
             </div>
           </div>
           <br>
@@ -161,9 +158,9 @@
           {% endif %}
           {% if user.is_authenticated and comment.user == user %}
           <button class="btn btn-danger deleteButtonComment"
-            comment_id="{{ comment.id }}">Delete</button>
+            data-comment_id="{{ comment.id }}">Delete</button>
           <button class="btn btn-primary updateButtonComment"
-            comment_id="{{ comment.id }}">Edit</button>
+            data-comment_id="{{ comment.id }}">Edit</button>
           {% endif %}
         </div>
         <!-- For loop ends here -->
