@@ -14,7 +14,8 @@ import cloudinary
 
 class RecipePostList(generic.ListView):
     """
-    Displays a paginated list of published RecipePosts.
+    A view that displays a paginated list of published RecipePosts using
+    Django's ListView.
 
     Attributes:
     - queryset: Selects RecipePosts with status=1 (published).
@@ -22,20 +23,16 @@ class RecipePostList(generic.ListView):
     rendering the list.
     - paginate_by: Number of RecipePosts to display per page, set to 6.
 
-    Utilizes Django's generic ListView for showing a filtered and paginated
-    list of RecipePosts.
     """
     queryset = RecipePost.objects.filter(status=1)
     template_name = "blog/index.html"
     paginate_by = 6
 
+
 def recipepost_detail(request, slug):
     """
-    Renders a RecipePost's detail page with comments and ratings functionality.
-
-    Parameters:
-    - request: HttpRequest object for current request.
-    - slug: String to uniquely identify the RecipePost.
+    Renders the detail page for a RecipePost with comments, ratings, and
+    forms for adding both.
 
     Context:
     Variables include the RecipePost instance, comments, comment count,
@@ -63,7 +60,7 @@ def recipepost_detail(request, slug):
                 comment.recipepost = recipepost
                 comment.save()
                 messages.add_message(request, messages.SUCCESS,
-                'Comment submitted and awaiting approval')
+                                     'Comment submitted and awaiting approval')
 
         elif 'reciperating' in request.POST:
             rating_form = RatingForm(data=request.POST)
@@ -77,22 +74,24 @@ def recipepost_detail(request, slug):
                 else:
                     # Check if the user has already rated the recipe, and
                     # update the rating if they have
-                    existing_rating = RecipeRating.objects.filter(user=
-                    request.user, recipepost=recipepost).first()
+                    existing_rating = RecipeRating.objects.filter(
+                        user=request.user, recipepost=recipepost).first()
                     if existing_rating:
                         existing_rating.reciperating = reciperating
                         existing_rating.save()
                     else:
                         RecipeRating.objects.create(user=request.user,
-                        recipepost=recipepost, reciperating=reciperating)
+                                                    recipepost=recipepost,
+                                                    reciperating=reciperating)
                     messages.add_message(request, messages.SUCCESS,
-                    'Rating saved successfully')
+                                         'Rating saved successfully')
                     return redirect(reverse('recipepost_detail',
-                    kwargs={'slug': slug}))
+                                            kwargs={'slug': slug}))
 
     # Calculate the average rating
-    average_rating = RecipeRating.objects.filter(recipepost=
-    recipepost).aggregate(Avg('reciperating'))['reciperating__avg'] or 0
+    average_rating = RecipeRating.objects.filter(
+        recipepost=recipepost).aggregate(Avg(
+            'reciperating'))['reciperating__avg'] or 0
 
     print("Average rating being passed to template:", average_rating)
 
@@ -110,14 +109,10 @@ def recipepost_detail(request, slug):
         },
     )
 
+
 def comment_edit(request, slug, comment_id):
     """
     Edits an existing comment on a RecipePost.
-
-    Parameters:
-    - request: HttpRequest, expects POST with edited comment data.
-    - slug: String identifying the RecipePost.
-    - comment_id: Integer ID of the comment to edit.
 
     Validates the comment edit form and updates the comment if the current
     user is the author. Sets the comment's approval status to False
@@ -140,18 +135,14 @@ def comment_edit(request, slug, comment_id):
             messages.add_message(request, messages.SUCCESS, 'Comment Updated!')
         else:
             messages.add_message(request, messages.ERROR,
-            'Error updating comment!')
+                                 'Error updating comment!')
     return HttpResponseRedirect(reverse('recipepost_detail', args=[slug]))
+
 
 def comment_delete(request, slug, comment_id):
     """
     Deletes a comment from a RecipePost if the current user is
     the comment's author.
-
-    Parameters:
-    - request: HttpRequest object.
-    - slug: String identifying the RecipePost associated with the comment.
-    - comment_id: Integer ID of the comment to be deleted.
 
     Verifies user ownership of the comment before deletion. Displays a success
     message upon deletion or an error message if the user is not the comment's
@@ -169,17 +160,13 @@ def comment_delete(request, slug, comment_id):
         messages.add_message(request, messages.SUCCESS, 'Comment deleted!')
     else:
         messages.add_message(request, messages.ERROR,
-        'You can only delete your own comments!')
+                             'You can only delete your own comments!')
     return HttpResponseRedirect(reverse('recipepost_detail', args=[slug]))
 
 
 def rate_recipe(request, slug):
     """
     Processes the submission of a rating for a RecipePost by the current user.
-
-    Parameters:
-    - request: HttpRequest object, must be POST containing 'reciperating'.
-    - slug: String to identify the RecipePost being rated.
 
     Validates the rating form and updates or creates a rating for the
     RecipePost, ensuring users cannot rate their own posts. Displays message
@@ -198,20 +185,21 @@ def rate_recipe(request, slug):
             if recipepost.user == request.user:
                 messages.error(request, 'You cannot rate your own recipe.')
                 return HttpResponseRedirect(reverse('recipepost_detail',
-                args=[slug]))
+                                                    args=[slug]))
             # Check if the user has already rated the recipe, and update the
             # rating if they have
-            existing_rating = RecipeRating.objects.filter(user=request.user,
-            recipepost=recipepost).first()
+            existing_rating = RecipeRating.objects.filter(
+                user=request.user, recipepost=recipepost).first()
             if existing_rating:
                 existing_rating.reciperating = reciperating
                 existing_rating.save()
             else:
-                RecipeRating.objects.create(user=request.user,
-                recipepost=recipepost, reciperating=reciperating)
+                RecipeRating.objects.create(
+                    user=request.user, recipepost=recipepost,
+                    reciperating=reciperating)
             messages.success(request, 'Rating saved successfully')
             return HttpResponseRedirect(reverse('recipepost_detail',
-            args=[slug]))
+                                                args=[slug]))
     # Redirect back if the request method is not POST
     return HttpResponseRedirect(reverse('recipepost_detail', args=[slug]))
 
@@ -219,15 +207,6 @@ def rate_recipe(request, slug):
 class AddRecipe(CreateView):
     """
     View for adding new RecipePost instances through a form submission.
-
-    Attributes:
-    - model: The model for the form to create instances of, RecipePost.
-    - form_class: Specifies the form to use for creating RecipePost instances,
-    RecipePostForm.
-    - template_name: The path to the template used for rendering the add recipe
-    form.
-    - success_url: URL to redirect to on successful form submission, the
-    'home' view.
 
     Overrides `form_valid` to assign the current user as the author of
     the RecipePost and checks for unique slug based on the title. Displays
@@ -250,12 +229,13 @@ class AddRecipe(CreateView):
         slug = slugify(form.cleaned_data['title'])
         if RecipePost.objects.filter(slug=slug).exists():
             messages.error(self.request,
-            'This recipe name already exists. Please choose a different one.')
+                           'This recipe name already exists. '
+                           'Please choose a different one.')
             return self.form_invalid(form)
 
         # If slug is unique, proceed with form validation
         messages.success(self.request,
-        'Recipe submitted and awaiting approval!')
+                         'Recipe submitted and awaiting approval!')
         return super(AddRecipe, self).form_valid(form)
 
     def form_invalid(self, form):
@@ -264,13 +244,8 @@ class AddRecipe(CreateView):
 
 class UpdateRecipe(UpdateView):
     """
-    View for updating existing RecipePost instances by their owners.
-
-    Attributes:
-    - model: The RecipePost model to be updated.
-    - form_class: Form class for updating RecipePost instances, set to
-    RecipePostForm.
-    - template_name: Template used to render the update form.
+    Allows owners to update their RecipePost instances, handling form
+    validation, image updates, and redirects on success.
 
     Methods override default behavior to ensure users can only update their
     own posts, provide a success URL based on the updated object's slug, and
@@ -289,7 +264,7 @@ class UpdateRecipe(UpdateView):
 
     def get_success_url(self):
         return reverse_lazy('recipepost_detail', kwargs={'slug': self.
-        object.slug})
+                                                         object.slug})
 
     def get_queryset(self):
         return RecipePost.objects.filter(user=self.request.user)
@@ -303,8 +278,10 @@ class UpdateRecipe(UpdateView):
         form = self.get_form()
         context = {
             'form': form,
-            'existing_image_public_id': self.extract_public_id(self.object.
-            food_image.url) if self.object.food_image else None,
+            'existing_image_public_id':
+                self.extract_public_id(
+                    self.object.food_image.url)
+                if self.object.food_image else None,
         }
         return self.render_to_response(context)
 
@@ -330,14 +307,10 @@ class UpdateRecipe(UpdateView):
 
 class DeleteRecipe(DeleteView):
     """
-    View for deleting a RecipePost instance, restricted to the post's author.
-
-    Overrides the get method to handle the deletion process. Verifies that the
-    current user is the author of the RecipePost before deletion. If the user
+    Allows authors to delete their RecipePost instances. It verifies the
+    author's identity before deletion and redirects with messages. If the user
     is not the author, an error message is displayed, and the user is
     redirected.
-
-    Success or error messages are provided.
 
     Returns:
     - HttpResponseRedirect to 'home' after deletion or after handling
@@ -355,6 +328,3 @@ class DeleteRecipe(DeleteView):
             # Handle unauthorized access, maybe show an error page or redirect
             messages.error(request, 'You can only delete your own recipes!')
             return HttpResponseRedirect(reverse('home'))
-
-
-

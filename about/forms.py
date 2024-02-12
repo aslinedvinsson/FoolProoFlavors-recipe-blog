@@ -2,12 +2,11 @@
 from django import forms
 from .models import ContactRequest
 
+
 class ContactForm(forms.ModelForm):
     """
-    Form class for creating a ContactRequest instance.
-
-    Utilizes the ContactRequest model and specifies the 'name', 'email',
-    and 'message' fields for inclusion in the form.
+    Form class for creating a ContactRequest with 'name', 'email', and
+    'message' fields.
     """
     class Meta:
         model = ContactRequest

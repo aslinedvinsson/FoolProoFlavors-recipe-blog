@@ -16,7 +16,6 @@ Walkthrough 'I think, therefor I blog'
 from pathlib import Path
 import os
 from django.contrib.messages import constants as messages
-#from cloudinary_storage.storage import MediaCloudinaryStorage
 import dj_database_url
 if os.path.isfile('env.py'):
     import env
@@ -36,8 +35,8 @@ SECRET_KEY = os.environ.get("SECRET_KEY")
 DEBUG = False
 
 ALLOWED_HOSTS = ['8000-aslinedvins-foolproflav-h2c96qwedmv.ws-eu107.gitpod.io',
-'8000-aslinedvins-foolproflav-h2c96qwedmv.ws-eu108.gitpod.io',
-'.herokuapp.com']
+                 '8000-aslinedvins-foolproflav-h2c96qwedmv.ws-eu108.gitpod.io',
+                 '.herokuapp.com']
 
 
 # Application definition
@@ -54,11 +53,11 @@ INSTALLED_APPS = [
     'allauth.socialaccount',
     'django_summernote',
 
-    #Apps
+    # Apps
     'blog',
     'about',
 
-    #Other
+    # Other
     'crispy_forms',
     'crispy_bootstrap5',
     'cloudinary',
@@ -108,12 +107,12 @@ WSGI_APPLICATION = 'foolproflavors.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
 
-#DATABASES = {
+# DATABASES = {
 #    'default': {
 #        'ENGINE': 'django.db.backends.sqlite3',
 #        'NAME': BASE_DIR / 'db.sqlite3',
 #    }
-#}
+# }
 
 DATABASES = {
     'default': dj_database_url.parse(os.environ.get("DATABASE_URL"))
@@ -129,16 +128,20 @@ CSRF_TRUSTED_ORIGINS = [
 
 AUTH_PASSWORD_VALIDATORS = [
     {
-        'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator',
+        'NAME': 'django.contrib.auth.password_validation.'
+        'UserAttributeSimilarityValidator',
     },
     {
-        'NAME': 'django.contrib.auth.password_validation.MinimumLengthValidator',
+        'NAME': 'django.contrib.auth.password_validation.'
+        'MinimumLengthValidator',
     },
     {
-        'NAME': 'django.contrib.auth.password_validation.CommonPasswordValidator',
+        'NAME': 'django.contrib.auth.password_validation.'
+        'CommonPasswordValidator',
     },
     {
-        'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
+        'NAME': 'django.contrib.auth.password_validation.'
+        'NumericPasswordValidator',
     },
 ]
 
@@ -168,12 +171,6 @@ MESSAGE_TAGS = {
 STATIC_URL = 'static/'
 STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static'), ]
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
-
-#Django Recipe Sharing Tutorial
-#Cloudinary settings
-#DEFAULT_FILE_STORAGE ='cloudinary_storage.storage.MediaCloudinaryStorage'
-#CLOUDINARY_URL = os.environ.get('CLOUDINARY_URL')
-
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field

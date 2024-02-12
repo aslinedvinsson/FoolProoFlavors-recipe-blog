@@ -4,6 +4,7 @@ from blog.models import RecipeRating
 
 register = template.Library()
 
+
 @register.simple_tag
 def get_average_rating(recipepost):
     return RecipeRating.objects.filter(recipepost=recipepost).aggregate(

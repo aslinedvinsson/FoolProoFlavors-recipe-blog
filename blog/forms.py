@@ -11,24 +11,22 @@ from crispy_forms.layout import Layout, Field
 # blog'
 class CommentForm(forms.ModelForm):
     """
-    Form for submitting comments with a customizable textarea. Initializes with
-    a textarea for the 'body' field, setting a placeholder. Utilizes crispy
-    forms for layout customization.
-
-    Attributes:
-    - body: CharField with a Textarea widget for comment input.
+    A form for submitting comments, featuring a textarea for the 'body' field,
+    and uses crispy forms for layout.
 
     Meta:
-    - model: The Comment model this form is associated with.
+    - model: The Comment model.
     - fields: Tuple specifying the 'body' field to be included in the form.
     """
     body = forms.CharField(label='', required=False, widget=forms.Textarea(
         attrs={'placeholder': 'Enter your comment here...'}))
+
     def __init__(self, *args, **kwargs):
         super(CommentForm, self).__init__(*args, **kwargs)
         self.helper = FormHelper(self)
         self.helper.layout = Layout(
             Field('body',),)
+
     class Meta:
         model = Comment
         fields = ('body',)
@@ -36,22 +34,20 @@ class CommentForm(forms.ModelForm):
 
 class RatingForm(forms.ModelForm):
     """
-    Form for submitting ratings for recipes, with validation for rating values.
-
-    Initializes with a number input for 'reciperating', enforcing a rating
-    scale of 1 to 10. Includes custom validation to ensure the rating falls
-    within the specified range.
+    A form for rating recipes, with validation for rating values ensuring
+    ratings are between 1 and 10.
 
     Attributes:
     - reciperating: IntegerField with a NumberInput widget, placeholder
     indicating the rating scale.
 
     Meta:
-    - model: RecipeRating model this form is associated with.
-    - fields: List containing 'reciperating' to specify the included field.
+    - model: RecipeRating model.
+    - fields: List containing 'reciperating'.
     """
     reciperating = forms.IntegerField(label='', required=True,
-    widget=forms.NumberInput(attrs={'placeholder': 'Rate 1 to 10'}))
+                                      widget=forms.NumberInput(attrs={
+                                          'placeholder': 'Rate 1 to 10'}))
 
     def __init__(self, *args, **kwargs):
         super(RatingForm, self).__init__(*args, **kwargs)
@@ -73,26 +69,23 @@ class RatingForm(forms.ModelForm):
 
 class RecipePostForm(forms.ModelForm):
     """
-    Form for creating or updating RecipePost entries with enhanced text fields.
-
-    Incorporates Summernote widgets for 'ingredients' and 'instructions'
-    fields to provide rich text editing features. Includes an optional hidden
-    field for managing the ID of an existing cloud-hosted image.
+    Form for creating or updating RecipePost entries with using Summernote for
+    rich text in 'ingredients' and 'instructions' and an optional hidden field
+    for image IDs.
 
     Meta:
-    - model: RecipePost, the model to which the form is linked.
+    - model: RecipePost
     - fields: List of fields included in the form, including text, choice, and
-    image fields with specific widgets for rich text fields.
+    image fields.
     """
     existing_image_public_id = forms.CharField(widget=forms.HiddenInput,
-    required=False)
+                                               required=False)
 
     class Meta:
         model = RecipePost
         fields = ['title', 'excerpt', 'ingredients', 'instructions',
-        'meal_type', 'effort', 'food_image', 'image_alt']
+                  'meal_type', 'effort', 'food_image', 'image_alt']
         widgets = {
             'ingredients': SummernoteWidget(),
             'instructions': SummernoteWidget(),
         }
-
