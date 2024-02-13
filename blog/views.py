@@ -11,7 +11,8 @@ from .models import RecipePost, Comment, RecipeRating
 from .forms import CommentForm, RecipePostForm, RatingForm
 import cloudinary
 
-
+# Code for RecipePostList is taken from the CodeInstitute Walkthrough
+# 'I think, therefor I blog'
 class RecipePostList(generic.ListView):
     """
     A view that displays a paginated list of published RecipePosts using
@@ -51,7 +52,6 @@ def recipepost_detail(request, slug):
     comment_form = CommentForm()
 
     if request.method == "POST":
-        print(request.POST)
         if 'body' in request.POST:
             comment_form = CommentForm(data=request.POST)
             if comment_form.is_valid():
@@ -65,7 +65,6 @@ def recipepost_detail(request, slug):
         elif 'reciperating' in request.POST:
             rating_form = RatingForm(data=request.POST)
             if rating_form.is_valid():
-                print('form is valid')
                 reciperating = rating_form.cleaned_data['reciperating']
 
                 # Prevent users from rating their own recipes
@@ -93,8 +92,6 @@ def recipepost_detail(request, slug):
         recipepost=recipepost).aggregate(Avg(
             'reciperating'))['reciperating__avg'] or 0
 
-    print("Average rating being passed to template:", average_rating)
-
     return render(
         request,
         "blog/recipepost_detail.html",
@@ -109,7 +106,8 @@ def recipepost_detail(request, slug):
         },
     )
 
-
+# Code taken from the CodeInstitute Walkthrough
+# 'I think, therefor I blog'
 def comment_edit(request, slug, comment_id):
     """
     Edits an existing comment on a RecipePost.
@@ -138,7 +136,8 @@ def comment_edit(request, slug, comment_id):
                                  'Error updating comment!')
     return HttpResponseRedirect(reverse('recipepost_detail', args=[slug]))
 
-
+# Code taken from the CodeInstitute Walkthrough
+# 'I think, therefor I blog'
 def comment_delete(request, slug, comment_id):
     """
     Deletes a comment from a RecipePost if the current user is
@@ -301,7 +300,6 @@ class UpdateRecipe(UpdateView):
             public_id = public_id_with_format.split('_')[0]
             return public_id
         except Exception as e:
-            print(f"Error extracting public_id: {e}")
             return None
 
 
