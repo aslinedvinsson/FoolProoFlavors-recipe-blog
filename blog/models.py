@@ -21,7 +21,7 @@ EFFORT = (("bad_day_comfort_food", "Bad day comfort food"),
           ("trying_a_healthy_day", "Trying a healthy day"), ("im_in_a_hurry",
           "I'm in a hurry"), ("i_have_time_but_no_brains",
           "I have time but no brains"),
-          ("to_far_until_payday", "To far until payday"))
+          ("too_far_until_payday", "Too far until payday"))
 
 
 # The RecipePost model is a partly customed model through the combination of
