@@ -140,14 +140,33 @@ body {
     color: rgb(172, 175, 175);
 }
 
+/*Social media icons*/
+.fab {
+    border-right: none !important;
+    }
+
+    .fab::after {
+    display: none !important;
+    }
+
+
 @media only screen and (max-width: 768px) {
     .card-img-top {
         height: 70vw;
     }
 }
 
-
-
+@media only screen and (max-width: 600px) {
+    .footer .d-flex {
+        flex-direction: column !important;
+        align-items: center !important;
+        text-align: center !important;
+        justify-content: center !important;
+    }
+    .footer .follow-us {
+        margin-top: 1rem !important;
+    }
+}
 
 
 
