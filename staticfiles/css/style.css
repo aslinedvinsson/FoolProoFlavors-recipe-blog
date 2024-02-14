@@ -157,12 +157,10 @@ body {
 }
 
 @media only screen and (max-width: 600px) {
-    .footer .d-flex {
-        flex-direction: column !important;
-        align-items: center !important;
-        text-align: center !important;
-        justify-content: center !important;
+    .avg_rating {
+        font-size: 5vw;
     }
+
     .footer .follow-us {
         margin-top: 1rem !important;
     }
