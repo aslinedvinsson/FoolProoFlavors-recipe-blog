@@ -56,10 +56,10 @@ class RecipePost(models.Model):
     status = models.IntegerField(choices=STATUS, default=0)
     updated_on = models.DateTimeField(auto_now=True)
     meal_type = models.CharField(max_length=50, choices=MEAL_TYPES,
-                                 default="vegan")
+                                 default="Vegan", blank=False)
     effort = models.CharField(
-        max_length=50, choices=EFFORT, default="Bad day comfort food"
-    )
+        max_length=50, choices=EFFORT, default="Bad day comfort food",
+        blank=False)
     food_image = CloudinaryField('image', default='placeholder')
     image_alt = models.CharField(max_length=100, null=False, blank=False)
 
