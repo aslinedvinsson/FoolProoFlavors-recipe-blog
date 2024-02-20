@@ -5,6 +5,7 @@
 
 body {
     background-color: #e8eae7;
+    margin:0;
 }
 
 .brand {
@@ -39,7 +40,7 @@ body {
     text-shadow: 2px 2px 4px #393535;
 }
 
-.footer {
+footer {
     background-color: #ed3f23;
 }
 
@@ -161,7 +162,7 @@ body {
         font-size: 5vw;
     }
 
-    .footer .follow-us {
+    footer .follow-us {
         margin-top: 1rem !important;
     }
 }
