@@ -1,19 +1,22 @@
 # FoolProoFlavors
 
-# FoolProoFlavors: Easy-to-Follow Recipes to Rescue Your Dinner Routine on Bored Days
-Foolprooflavors is a recipe blog, for recipes that actually are used and cooked. The blog presents en uppsjö av recipes contributed by fellow lazy people. The users can create an account and when logged in, they can post, edit and delete recipes. The users can also comment on their own and others recipes and rate other's recipes. The recipes should include ingredients, instructions, mealtype, effort and an image. The admin approves the recipeposts and comments before publishing. The users can read about the community behind the recipe idea and contact the admin through a message form and the message is saved in the database.
+# Easy-to-Follow Recipes to Rescue Your Dinner Routine on Bored Days
 
-***/// bild av am i responsive
+FoolProofFlavors is a recipe blog featuring tried-and-true recipes that are actually cooked and enjoyed. The blog showcases a plethora of recipes contributed by fellow lazy cooks. Users have the option to create an account, enabling them to post, edit, and delete recipes. They can also leave comments on their own and others' recipes, as well as rate the recipes posted by others. Each recipe includes a list of ingredients, detailed instructions, meal type, level of effort required, and an accompanying image.
+
+All recipe posts and comments undergo approval by the admin before being published to ensure quality and relevance. Users can learn more about the community behind each recipe idea and reach out to the admin through a message form, with all messages being securely saved in the database.
+
+![](docs/responsive.png)
 
 The live link can be found here - [Foolprooflavors](https://foolproflavorsrecipeapp-92d4f04278dd.herokuapp.com/)
 
-## Table of Contents////
+## Table of Contents
 
 - [FoolProoFlavors](#foolprooflavors)
   * [User Experience (UX)](#user-experience-ux)
     + [User Stories](#user-stories)
     + [Design](#design)
-      - [Colour Scheme](#colour-scheme)
+      - [Colors](#colors)
       - [Imagery](#imagery)
       - [Fonts](#fonts)
       - [Wireframes](#wireframes)
@@ -24,7 +27,7 @@ The live link can be found here - [Foolprooflavors](https://foolproflavorsrecipe
     + [User Authentication](#user-authentication)
     + [Form Validation](#form-validation)
     + [Database Security](#database-security)
-    + [Custom error pages:](#custom-error-pages-)
+    + [Custom error page:](#custom-error-pages-)
   * [Features](#features)
     + [Header](#header)
     + [Footer](#footer)
@@ -46,48 +49,49 @@ The live link can be found here - [Foolprooflavors](https://foolproflavorsrecipe
 
 A visitor to Foolprooflavors would be someone who is most likely an adult who thinks cooking is a hastle, are creative in other ways but when it comes to cooking their imagination stops. when it comes to cooking they are bored and lazy and at the same time they want easy, cheap, healthy, fast and of course great tasting recipes.
 
-### User Stories ******/////lägg in userstories
+### User Stories
 
-For detailed acceptance criteria and tasks associated with each user story, please visit the GitHub repository [here](hhttps://github.com/users/aslinedvinsson/projects/5)
+For detailed acceptance criteria and tasks associated with each user story, please visit the GitHub repository [here](https://github.com/users/aslinedvinsson/projects/5)
+
+
+Example User Story![Example User Story](docs/userstoryex.png)
+Kanban Board![Kanban Board](docs/userstory.png)
 
 #### EPIC | Sign up/Log in
 - User Story: As a new user, I want to be able to register an account with my email.
 - User Story: As a registered user I can log in using my credentials
 
-#### EPIC | Recipe posts ///
--
-
 #### EPIC | CRUD functionality for recipe posts
-- User Story: As a user, I want to interact in a comment section for recipe posts.
-- User Story: Story: As an admin, I want to be able to approve or disapprove comments on recipe posts.
-- User Story:Story: As an admin, I want tools to approve or disapprove recipe posts before publication.
+- User Story: As a user, I want to see recipe posts on the main page.
 - User Story: As a user, I want to be able to view detailed recipe post content.
 - User Story: As a user, I want to be able to create and submit a new recipe post.
 - User Story: As a user, I want to be able to editing my submitted recipe posts.
 - User Story: As a user, I want to delete my own recipe posts when needed.
+- User Story: As a user, I want a function for rating recipes.
+- User Story: As an admin, I want to have a frontend validation for the recipe post form.
+- User Story: As an admin, I want tools to approve or disapprove recipe posts before publication.
 
-#### EPIC | User interction (comments, rating) ////
-- User Story:
-- User Story:
-- User Story:
+#### EPIC | Comment section
+- User Story: As a user, I want to interact in a comment section for recipe posts, by adding comments.
+- User Story: As a logged-in user, I want to edit and delete my own comments.
+- User Story: As an admin, I want to be able to approve or disapprove comments on recipe posts.
 
+#### EPIC | About page
+- User Story: As a user, I want an access the About page.
+- User Story: As an admin, I want an interface to craft and update the About information.
 
-#### EPIC | About page ////
-- User Story:
-- User Story:
-- User Story:
+#### EPIC | Contact form
+- User Story: As a users, I can use the contact form on the About page.
+- User Story: As an admin I want a database schema for storing emails.
 
-#### EPIC | Site Administration omformulera ////
-- User Story:
-- User Story:
-- User Story:
-
-#### User stories not yet implemented lägg in userstories////
-- User Story:
-- User Story:
-- User Story:
-
-
+#### EPIC | Future development
+**User stories not yet implemented**
+- User Story: As a user, I should have a way to report inappropriate comments.
+- User Story: As a user I want a profile page for managing recipes and personal information.
+- User Story: As a user, I want a search interface for recipes, to search for and filter among recipes.
+- User Story: As a user I can share my favorite recipes on social media platforms.
+- User Story: As a user, I want a frontend section for the dispalyed featured recipes.
+- User Story: As a user, I want to receive notifications for comments and ratings on my recipes.
 
 
 ### Design
@@ -97,31 +101,47 @@ The website boasts a straightforward and uncluttered design, deliberately chosen
 #### Colour Scheme
 Colour palette from Coolors
 
-![Colour Palette](docs/readme_images/colour_scheme.png) ****////lägg till bild på färg
+![Colour Palette](docs/red.png)
+![Colour Palette](docs/white.png)
 
-The website showcases a simple design, with a deliberate emphasis on red and white colors to embody its vision. These colors are selected not only to create an atmosphere that calms the users but also to boost their confidence in the kitchen. The goal is to make the act of cooking feel less like a chore and more like an enjoyable activity, ultimately cultivating a desire to eat and enjoy food.
+The website showcases a simple design, with a deliberate emphasis on red and a soft white colors to embody its vision. These colors are selected not only to create an atmosphere that calms the users but also to boost their confidence in the kitchen. The goal is to make the act of cooking feel less like a chore and more like an enjoyable activity, ultimately cultivating a desire to eat and enjoy food.
 
 #### Images
 The static images are the one for the About page and a default image of food if no image is uploaded when adding och editing a recipe post. The users choose their own images to upload suitable for the recipe post.
 
-////lägg in små images
+#### Fonts
+Roboto is chossen because it's highly readable, versatile across many applications, has a modern look, and ensures compatibility across devices and platforms. Sans Serif is the backup font, in case for any reason the main font isn't being imported into the site correctly.
 
-#### Fonts ****//////
+Major Mono is a monospaced (fixed-width) font, where each character takes up the same amount of horizontal space. Despite being monospaced, Major Mono has a modern and clean appearance. Its design add a contemporary touch to the project. Monospace is the backup font, in case for any reason Major Mono isn't being imported into the site correctly.
 
+The fonts were imported via [Google Fonts](https://fonts.google.com/).
 
-#### Wireframes//////
+#### Wireframes
 
 <details>
 
  <summary>Home page</summary>
 
-![Home Page](docs/wireframes/home_wireframe.png)
+![Home Page](docs/wireframes/main_page.png)
+![Home Page Desktop](docs/wireframes/desktop_mainpage.png)
 </details>
 
 <details>
 
-<summary>Recipe page</summary>
-![Recipe page](docs/wireframes/recipe_wireframe.png)
+ <summary>Log in/log out/register</summary>
+
+![Log in/ Register](docs/wireframes/signup_login.png)
+![Register Desktop](docs/wireframes/desktop_signup.png)
+![Log in Desktop](docs/wireframes/desktop_sigin.png)
+![Log out Desktop](docs/wireframes/desktop_signout.png)
+</details>
+
+<details>
+
+<summary>Recipe Page</summary>
+
+![Recipe Page](docs/wireframes/recipe_detail.png)
+![Recipe Page Desktop](docs/wireframes/desktop_recipedetail.png)
 </details>
 
 
@@ -129,40 +149,33 @@ The static images are the one for the About page and a default image of food if 
 
 <summary>Add Recipe</summary>
 
-![Add Recipe](docs/wireframes/addrecipe_wireframe.png)
+![Add Recipe](docs/wireframes/addrecipe.png)
+![Add Recipe Desktop](docs/wireframes/desktop_add.png)
 </details>
 
 <details>
 
-<summary>Edit Recipe</summary>
+<summary>Update Recipe</summary>
 
-![Update Recipe](docs/wireframes/addrecipe_wireframe.png)
+![Edit Recipe](docs/wireframes/updaterecipe.png)
+![Edit Recipe Desktop](docs/wireframes/desktop_update.png)
 </details>
 
 <details>
 
-<summary>Add Recipe</summary>
+<summary>Delete Recipe</summary>
 
-![Delete Recipe](docs/wireframes/addrecipe_wireframe.png)
+![Delete Recipe](docs/wireframes/delete_recipe.png)
+![Delete Recipe Desktop](docs/wireframes/desktop_delete.png)
 </details>
-
-<details>
-
-<summary>About page</summary>
-
-![Delete Recipe](docs/wireframes/about_wireframe.png)
-</details>
-
-
-
 
 ## Agile Methodology
 
-The development process was managed through GitHub projects, utilizing an agile methodology. Refer to the project board link for more details. [here](hhttps://github.com/users/aslinedvinsson/projects/5)
+The development process was managed through GitHub projects, utilizing an agile methodology. Refer to the project board link for more details. [here](https://github.com/users/aslinedvinsson/projects/5)
 
-In the GitHub project, there are seven big tasks called Epics. Each smaller task, known as a User Story, has a GitHub Issue linked to an Epic. Every User Story includes clear criteria to show when it's done. These criteria are divided into smaller tasks to help complete the User Story. The MoSCoW method is used to decide which tasks are top priority and which ones can be done later in agile project management.
+In the GitHub project, there is one Milstone including seven big tasks called Epics. Each smaller task, known as a User Story, is linked to an Epic. Every User Story includes clear criteria to show when it's done. These criteria are divided into smaller tasks to help complete the User Story. The MoSCoW method is used to decide which tasks are top priority and which ones can be done later in agile project management.
 
-*****Add printscreen on kanban board/////
+![Kanban Board](docs/kanbanboard.png)
 
 ## Data Model
 
@@ -182,18 +195,19 @@ The comment model is taken from the CodeInstitute Walkthrough 'I think, therefor
 **RecipeRating Model**
 Custom model. Provides a mechanism for users to rate recipes, incorporating a numerical reciperating field. It maintains a dual ForeignKey setup: one linking to RecipePost and another to User. This creates a many-to-one relationship from RecipeRating to both RecipePost and User, enabling multiple ratings per recipe and per user.
 
-The ERD below details the database schema.
-*****////
-![Database Schema](docs/readme_images/database_schema.png)
+The diagrams below details the database schema.
+
+Entity Relationship Diagram![Entity Relationship Diagram ](docs/erd1.png)
+![](docs/erd2.png)
 
 ## Testing
 
 Testing and results can be found [here](/TESTING.md)
 
-## Security Features and Defensive Design ****
+## Security Features and Defensive Design
 
-### User Authentication****/////
-
+### User Authentication
+User authentication is applied to protect user data and prevent unauthorized access. During registration, users create a unique username and a strong password, following stringent security requirements. The login process securely verifies these credentials.
 
 ### Form Validation
 Should a form be submitted with incorrect or missing information, it will not proceed, and the user will receive a notification identifying the field that triggered the error.
@@ -203,33 +217,39 @@ The env.py file securely stores the database URL and secret key to safeguard aga
 
 To enhance site security, Cross-Site Request Forgery (CSRF) tokens have been implemented across all forms.
 
-### Custom error pages:***////
+### Error Page
+404 - Page Not Found error page was created to guide them back to the site.
+
+![404-Error](docs/404.png)
 
 
 ## Features
 
 ### Header
 
-![header](docs/readme_images/features/header.png)
+**Logo**
+- A customised logo was created using Hatchful by Shopify which is a free logo generator.
+- This logo is positioned in the top left of the navigation bar. The logo is linked to the home page for ease of navigation for the user.
 
-**Logo**////
--
+**Navigation Bar**
 
-**Navigation Bar**/////
+- The navigation bar is present at the top of every page and includes all links to the various other pages.
+- The options to Register or Log in will change to the option to log out once a user has logged in.
+- The navigation bar is fully responsive, collapsing into a hamburger menu when the screen size becomes too small.
 
-![Navigation bar](docs/readme_images/features/navbar.png)
-
-
-
+Desktop
+![header](docs/header.png)
+Smaller devices
+![navbar](docs/navbar.png)
 
 ### Footer
 
-![Footer](docs/readme_images/features/footer.png)
+![footer](docs/footer.png)
 
 The footer contains links to social media platforms including Facebook, Instagram, Twitter, and YouTube. These links, when clicked, open in a new browser tab to ensure users remain on the site.
 
-### Home Page /////
-![Home page](docs/readme_images/features/home.png)
+### Home Page///////
+![Home](docs/home.png)
 
 
 
@@ -239,38 +259,40 @@ Django allauth was implemented to facilitate the creation of Sign Up, Log In, an
 
 **Register**
 
-![Sign up](docs/readme_images/features/signup.png)
+![Sign up](docs/register.png)
 
 **Log In**
 
-![Log in](docs/readme_images/features/login.png)
+![Log in](docs/login.png)
 
 **Log Out**
 
-![Log out](docs/readme_images/features/logout.png)
+![Log out](docs/logout.png)
 
 
 ### Recipe Detail Page
-**Recipe Details page**//////
 
-![Recipe]](docs/readme_images/features/recipe_details.png)
+![Recipe](docs/recipedetail.png)
+![Recipe](docs/recipedetail2.png)
 
-- The page show a title and image of the recipe, ingredients and instruction. The recipe contributor also choos meal type and level of effort in a roll down menu.
+The page show a title and image of the recipe, ingredients and instruction. The recipe contributor also choose meal type and level of effort in a roll down menu.
 
 **Recipe rating section**
+
 Logged-in users can rate recipes on a scale of 1 to 10. Each time a user rates a recipe, an average rating is calculated based on the total number of ratings from all users for that specific recipe, and the displayed rating is updated accordingly. Users are not allowed to rate their own submitted recipes.
+
+![Rating](docs/rating.png)
 
 **Comments Section**
 
-![Add, edit and delete comment](docs/readme_images/features/comment.png)
+![Add, edit and delete comment](docs/comment.png)
 
-Below every recipe, all logged-in users can read previously published comments, and they have the ability to add new ones, as well as edit and delete their own previous comments. When a comment is added or updated, the admin must approve and publish it before it becomes visible to other users. The user who added or updated the comment can see their draft comment in a greyish color.
-
+Below every recipe, all logged-in users can read previously published comments, and they have the ability to add new ones, as well as edit and delete their own previous comments. When a comment is added or updated, the admin must approve and publish it before it becomes visible to other users. The user who added or updated the comment can see their draft comment in a greyish color. The user receives a message notifying them that the comment has been successfully added, updated or deleted.
 
 
 ### Add Recipe Form
 
-![Add recipe](docs/readme_images/features/add_recipe.png)
+![Add recipe](docs/add.png)
 
 Logged-in users can add a recipe by clicking the corresponding link in the navigation bar.
 The 'Ingredients' and 'Instructions' form fields feature a WYSIWYG editor named Summernote, enabling users to format their content with bullet points, headings, and more.
@@ -282,7 +304,7 @@ Upon successful addition, the user is greeted with a message confirming that the
 
 ### Update Recipe Form
 
-![Update recipe](docs/readme_images/features/update_recipe.png)
+![Update recipe](docs/update.png)
 
 Logged-in users who authored a recipe can opt to update it by selecting the update button located on the recipe detail page.
 The update button is not shown if the user is not the aurthor of the recipe.
@@ -291,31 +313,21 @@ After successfully updating a recipe, users will receive a notification confirmi
 
 ### Delete Recipe
 
- ![Delete recipe](docs/readme_images/features/delete_recipe.png)
+ ![Delete recipe](docs/delete.png)
 
 Logged-in users who are the authors of a recipe have the option to delete it by clicking the delete button on the recipe's detail page.
 A prompt will appear, asking the user to confirm the deletion or cancel the action.
 Upon successful deletion, the user will be notified with a message confirming that the recipe has been deleted.
 
 ### About page
-![About page](docs/readme_images/features/about.png)
+![About page](docs/about.png)
 
 **Contact form**
-![Contact form](docs/readme_images/features/contact_form.png)
+![Contact form](docs/contact.png)
 
-### Error Pages///////
-
-Custom Error Pages were created to give the user more information on the error and to guide them back to the site.
-
-![header](docs/readme_images/features/403_error.png)
-
-- 400 Bad Request - The Easy Eater is unable to handle this request.
-- 403 Page Forbidden - Looks like you're trying to access forbidden content. Please log out and sign in to the correct account.
-- 404 Page Not Found - The page you're looking for doesn't exist.
-- 500 Server Error - The Easy Eater is currently unable to handle this request
 
 ### Future Features
-The following user stories were scoped out of the project due to time constraints and labelled as "Could Have" or "Won't have" on the project board in Github. It is intended that these user stories will be implemented at a later date.
+The following user stories were scoped out of the project due to time constraints and labelled as "Could Have" or "Won't have" on the project board in Github. These user stories will be implemented at a later stage.
 
 - Story: As a user I want a profile page for managing recipes and personal information.
 - Story: As a user, I want a search interface for recipes.
@@ -323,50 +335,47 @@ The following user stories were scoped out of the project due to time constraint
 - Story: As a user, I want a frontend section for the dispalyed featured recipes.
 - Story: As a user, I want to receive notifications for comments and ratings on my recipes.
 
-
 ## Deployment - Heroku
 
-Deploying a web page to Heroku from a GitHub repository involves several steps:
+### Setting Up the Heroku App
+- **Sign in or register** at [Heroku](https://www.heroku.com/).
+- **Click "New"** in the top right corner on the dashboard, then choose **"Create New App"** from the dropdown.
+- **Name your app** uniquely and meaningfully.
+- **Choose your preferred region**.
+- **Finalize** by clicking **"Create App"**.
 
-**Setting Up the Heroku App:**
-First, sign in or register at Heroku.
-Click "New" in the top right corner on the dashboard, then choose "Create New App" from the dropdown.
-Name your app uniquely and meaningfully.
-Choose your preferred region.
-Finalize by clicking "Create App".
+### Integrating the Postgres Database
+- Navigate to the **Resources tab**, search for **Postgres** in the add-ons search bar, and select **Heroku Postgres**.
+- In the **Settings Tab**, under **Config Vars**, locate and copy the **DATABASE_URL**.
 
-**Integrating the Postgres Database:**
-Navigate to the Resources tab, search for Postgres in the add-ons search bar, and select Heroku Postgres.
-In the Settings Tab, under Config Vars, locate and copy the DATABASE_URL.
+### Configuring the Environment and `settings.py`
+- In your development environment, create an **`env.py`** file in the root directory.
+- Insert the **`DATABASE_URL`** and a **`SECRET_KEY`** of your choice into **`env.py`**.
+- Modify **`settings.py`** to import **`env.py`** and configure **`SECRET_KEY`** and **`DATABASE_URL`** settings.
+- **Disable** the default database config.
+- **Commit** your changes and run migrations.
+- Include the **Cloudinary URL** in **`env.py`**.
+- Register cloudinary libraries to your installed apps.
+- Configure **STATIC files settings**: URLs, storage paths, directories, and Cloudinary storage settings.
+- Update **`ALLOWED_HOSTS`** in **`settings.py`** to include your Heroku app domain and 'localhost'.
 
-**Configuring the Environment and settings.py:**
-In your development environment, create an env.py file in the root directory.
-Insert the DATABASE_URL and a SECRET_KEY of your choice into env.py.
-Modify settings.py to import env.py and configure SECRET_KEY and DATABASE_URL settings.
-Disable the default database config.
-Commit your changes and run migrations.
-Include the Cloudinary URL in env.py.
-Register cloudinary libraries to your installed apps.
-Configure STATIC files settings: URLs, storage paths, directories, and Cloudinary storage settings.
-Update ALLOWED_HOSTS in settings.py to include your Heroku app domain and 'localhost'.
+### Preparing Required Files and Directories
+- Generate a **`requirements.txt`** file.
+- Create **media**, **static**, and **templates** directories within the root directory.
+- Add a **"Procfile"** in the root with the content: **`web: gunicorn your_project_name.wsgi`**.
 
-**Preparing Required Files and Directories:**
-Generate a requirements.txt file.
-Create media, static, and templates directories within the root directory.
-Add a "Procfile" in the root with the content: web: gunicorn your_project_name.wsgi.
-
-**Configuring Heroku Environment Variables:**
+### Configuring Heroku Environment Variables
 Set the following in Heroku's Config Vars:
-SECRET_KEY
-CLOUDINARY_URL
-PORT: 8000
-DISABLE_COLLECTSTATIC: 1
+- **`SECRET_KEY`**
+- **`CLOUDINARY_URL`**
+- **`PORT`: 8000**
+- **`DISABLE_COLLECTSTATIC`: 1**
 
-**Deployment Process:**
-Ensure DEBUG is set to False in Django's settings.
-In Heroku's dashboard, go to the Deploy tab, link your GitHub repository, and select the branch to deploy.
-Choose between automatic deployments upon repo updates or manual deployment.
-After deployment, click "View" to see your live site.
+### Deployment Process
+- Ensure **`DEBUG`** is set to False in Django's settings.
+- In Heroku's dashboard, go to the **Deploy tab**, link your GitHub repository, and select the branch to deploy.
+- Choose between **automatic deployments** upon repo updates or **manual deployment**.
+- After deployment, click **"View"** to see your live site.
 
 The site is now live and operational.
 
@@ -395,10 +404,11 @@ The site is now live and operational.
 - [Unsplash](https://unsplash.com/) - Used for rendering free images.
 - [Favicon](https://favicon.io/) - Used to create the favicon.
 - [Lucidchart](https://lucid.app/) - used to create the database schema design
-- [Summernote](https://summernote.org/): A WYSIWYG editor to allow users to edit their posts
+- [Summernote](https://summernote.org/) A WYSIWYG editor to allow users to edit their posts
 - [Crispy Forms](https://django-crispy-forms.readthedocs.io/en/latest/) used to manage Django Forms
-- [Cloudinary](https://cloudinary.com/): the image hosting service used to upload images
-- [Bootstrap 4.6](https://getbootstrap.com/docs/4.6/getting-started/introduction/): CSS Framework for developing responsiveness and styling
+- [Cloudinary](https://cloudinary.com/) the image hosting service used to upload images
+- [Bootstrap 4.6](https://getbootstrap.com/docs/4.6/getting-started/introduction/) CSS Framework for developing responsiveness and styling
+- [Noun Project](https://thenounproject.com/browse/icons/term/food/) Used for free favicon.
 
 
 ## Credits
@@ -408,21 +418,20 @@ Photo by <a href="https://unsplash.com/@thoughtcatalog?utm_content=creditCopyTex
 
 Photo by <a href="https://unsplash.com/@eliottreyna?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash">Eliott Reyna</a> on <a href="https://unsplash.com/photos/three-men-and-laughing-two-women-walking-side-by-side-jCEpN62oWL4?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash">Unsplash</a>
 
+Favicon by Adrien Coquet from <a href="https://thenounproject.com/browse/icons/term/food/" target="_blank" title="Food Icons">Noun Project</a> (CC BY 3.0)
+
 - [Django Docs](https://docs.djangoproject.com/en/4.0/)
 - [Bootstrap 4.6 Docs](https://getbootstrap.com/docs/4.6/getting-started/introduction/)
 - [Stack Overflow](https://stackoverflow.com/)
-- [Django Recipe Sharing Tutorial](https://www.youtube.com/watch?v=sBjbty691eI&list=PLXuTq6OsqZjbCSfiLNb2f1FOs8viArjWy)
-- [Code Institute - Blog Walkthrough Project](https://github.com/Code-Institute-Solutions/Django3blog)
+- [Django Recipe Sharing Tutorial](https://www.youtube.com/watch?v=sBjbty691eI&list=PLXuTq6OsqZjbCSfiLNb2f1FOs8viArjWy) Each file specifies which sections of the code are derived from external sources.
+- [Code Institute - Blog Walkthrough Project](https://github.com/Code-Institute-Solutions/Django3blog) Each file specifies which sections of the code are derived from external sources.
 
-Readme inspired by Pedro Cristo https://github.com/PedroCristo/portfolio_project_4/ and Alison O'Keeffe https://github.com/AliOKeeffe/PP4_My_Meal_Planner
 
 ## Acknowledgments
 
-**************//////
+I would like to express our sincere appreciation to Jad Mokdad for his  guidance and support throughout the development of this coding project. His expertise and mentorship have been instrumental in helping me overcome challenges and enhance my coding skills.
 
-
-
-
+Readme inspired by Pedro Cristo https://github.com/PedroCristo/portfolio_project_4/ and Alison O'Keeffe https://github.com/AliOKeeffe/PP4_My_Meal_Planner
 
 
 
