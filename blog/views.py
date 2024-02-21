@@ -11,6 +11,7 @@ from .models import RecipePost, Comment, RecipeRating
 from .forms import CommentForm, RecipePostForm, RatingForm
 import cloudinary
 
+
 # Code for RecipePostList is taken from the CodeInstitute Walkthrough
 # 'I think, therefor I blog'
 class RecipePostList(generic.ListView):
@@ -106,6 +107,7 @@ def recipepost_detail(request, slug):
         },
     )
 
+
 # Code taken from the CodeInstitute Walkthrough
 # 'I think, therefor I blog'
 def comment_edit(request, slug, comment_id):
@@ -135,6 +137,7 @@ def comment_edit(request, slug, comment_id):
             messages.add_message(request, messages.ERROR,
                                  'Error updating comment!')
     return HttpResponseRedirect(reverse('recipepost_detail', args=[slug]))
+
 
 # Code taken from the CodeInstitute Walkthrough
 # 'I think, therefor I blog'

@@ -7,8 +7,8 @@ and then modified -->
 {% block content %}
 <div class="container mt-5">
     <div class="row justify-content-center align-items-center">
-        <div class="col-12 col-md-8 text-center" {% if about.about_image %} <!--
-            If about_image is set, display it -->
+        <div class="col-12 col-md-8 text-center">
+            {% if about.about_image %}
             <img src="{{ about.about_image.url }}" class="about_image"
                 alt="{{ about.title }}" style="width: 100%;">
             {% else %}

@@ -1,14 +1,29 @@
-* {
-    font-family: 'Roboto', sans-serif;
-  }
+/* Variables */
+:root {
+    --primary-color: #ed3f23;
+    --background-color: #e8eae7;
+    --text-shadow: 2px 2px 4px #726868;
+    --font-family-base: 'Roboto', sans-serif;
+    --font-family-heading: 'Major Mono Display', monospace;
+}
 
+/* Base styles */
+* {
+    font-family: var(--font-family-base);
+}
 
 body {
-    background-color: #e8eae7;
-    margin:0;
+    background-color: var(--background-color);
+    margin: 0;
+}
+
+/* Typography */
+.brand, .hero-text, .recipepost-title, .recipepost-excerpt {
+    text-shadow: var(--text-shadow);
 }
 
 .brand {
+    font-family: var(--font-family-heading);
     font-size: 5vw;
     color: #ed3f23;
     text-shadow: 2px 2px 4px #726868;
@@ -16,10 +31,7 @@ body {
     font-style: normal;
 }
 
-.main-bg {
-    background-color: #e8eae7;
-}
-
+/* Component: Hero */
 .hero-container {
     position: relative;
     text-align: center;
@@ -40,10 +52,7 @@ body {
     text-shadow: 2px 2px 4px #393535;
 }
 
-footer {
-    background-color: #ed3f23;
-}
-
+/* Component: Card */
 .card {
     border: none;
     background-color: transparent;
@@ -54,6 +63,7 @@ footer {
     object-fit: cover;
 }
 
+/* Layout: Masthead */
 .masthead {
     margin-top: 10px;
     position: relative;
@@ -77,6 +87,7 @@ footer {
     color: #e8eae7;
 }
 
+/* Links */
 .recipepost-link {
     text-decoration: none;
     color: #5C636B;
@@ -86,6 +97,42 @@ footer {
     color: #ed3f23;
 }
 
+/* Buttons */
+.btn {
+    box-shadow: 2px 2px 4px #393535;
+}
+
+/* Add recipe and update recipe page */
+.recipform_container {
+    background-color: #e8eae7;
+    padding-top: 5%;
+}
+
+/* Comments not yet approved from admin */
+.faded {
+    color: rgb(172, 175, 175);
+}
+
+/*Social media icons*/
+.fab {
+    border-right: none !important;
+    }
+
+    .fab::after {
+    display: none !important;
+    }
+
+/* Component: Main Background */
+.main-bg {
+    background-color: #e8eae7;
+}
+
+/* Layout: Footer */
+footer {
+    background-color: #ed3f23;
+}
+
+/* Component: Recipe Post */
 .recipepost-title {
     margin-top: 20%;
     font-size: 8vw!important;
@@ -111,6 +158,7 @@ footer {
     font-style: italic;
 }
 
+/* Pagination*/
 .pagination li {
     margin: 0 5px;
 }
@@ -121,31 +169,7 @@ footer {
     color: #5C636B;
 }
 
-.btn {
-    box-shadow: 2px 2px 4px #393535;
-}
-
-/* Add recipe and update recipe page */
-.recipform_container {
-    background-color: #e8eae7;
-    padding-top: 5%;
-}
-
-/* Comments not yet approved from admin */
-.faded {
-    color: rgb(172, 175, 175);
-}
-
-/*Social media icons*/
-.fab {
-    border-right: none !important;
-    }
-
-    .fab::after {
-    display: none !important;
-    }
-
-
+/* Media queries*/
 @media only screen and (max-width: 768px) {
     .card-img-top {
         height: 70vw;
