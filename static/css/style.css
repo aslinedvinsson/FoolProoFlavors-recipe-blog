@@ -1,7 +1,7 @@
 /* Variables */
 :root {
     --primary-color: #ed3f23;
-    --background-color: #e8eae7;
+    --background-color: #f9f9f9;
     --text-shadow: 2px 2px 4px #726868;
     --font-family-base: 'Roboto', sans-serif;
     --font-family-heading: 'Major Mono Display', monospace;
@@ -23,12 +23,14 @@ body {
 }
 
 .brand {
-    font-family: var(--font-family-heading);
-    font-size: 5vw;
-    color: #ed3f23;
-    text-shadow: 2px 2px 4px #726868;
     font-family: "Major Mono Display", monospace;
+    font-size: 5vw;
+    color: #FFFFFF;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
     font-style: normal;
+    background-color:#ed3f23;
+    padding: 5px;
+    border-radius: 5px;
 }
 
 /* Component: Hero */
@@ -84,7 +86,7 @@ body {
 .masthead-text {
     position: absolute;
     z-index: 200;
-    color: #e8eae7;
+    color: #f9f9f9;
 }
 
 /* Links */
@@ -104,7 +106,7 @@ body {
 
 /* Add recipe and update recipe page */
 .recipform_container {
-    background-color: #e8eae7;
+    background-color: #f9f9f9;
     padding-top: 5%;
 }
 
@@ -124,7 +126,7 @@ body {
 
 /* Component: Main Background */
 .main-bg {
-    background-color: #e8eae7;
+    background-color: #f9f9f9;
 }
 
 /* Layout: Footer */
@@ -161,12 +163,6 @@ footer {
 /* Pagination*/
 .pagination li {
     margin: 0 5px;
-}
-
-.pagination .page-link {
-    border: 1px solid;
-    border-radius: 5px;
-    color: #5C636B;
 }
 
 /* Media queries*/
