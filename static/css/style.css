@@ -118,6 +118,7 @@ body {
 /*Social media icons*/
 .fab {
     border-right: none !important;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5)!important;
     }
 
     .fab::after {
@@ -132,6 +133,7 @@ body {
 /* Layout: Footer */
 footer {
     background-color: #ed3f23;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5)!important;
 }
 
 /* Component: Recipe Post */
