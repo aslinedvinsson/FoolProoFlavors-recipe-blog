@@ -17,6 +17,9 @@ Result Desktop
 **Issues with Summernote in Recipe Forms**
 While validating the Add Recipe and Edit Recipe forms, I encountered several issues stemming from the Summernote library that activates upon using these forms. Since these errors originated from the Summernote library rather than my own code, I was unable to resolve them, leaving the issues unaddressed.
 
+Solve bug with footer shrinking too much on add recipe and update recipe pages by adding code to settings.py, found at [Stack Overflow](https://stackoverflow.com/questions/61657061/how-do-i-resize-the-width-of-summernote/74774242#74774242)
+
+
 ### CSS Validation
 No errors were found when using [W3C Jigsaw validation](https://jigsaw.w3.org/css-validator/) for the custom CSS.
 
@@ -33,6 +36,7 @@ comment.js
 ### Console Results
 The browser console shows one error. The error does not seem to affect any functions and does not show in any linter tool.
 ![Console Result](docs/test/jserror.png)
+Solved through https://github.com/twbs/bootstrap/issues/37305
 
 
 ### Browser Testing

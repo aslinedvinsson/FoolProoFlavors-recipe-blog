@@ -54,8 +54,11 @@ For detailed acceptance criteria and tasks associated with each user story, plea
 
 
 Example User Story
+
 ![Example User Story](docs/userstoryex.png)
+
 Kanban Board
+
 ![Kanban Board](docs/userstory.png)
 
 #### EPIC | Sign up/Log in
@@ -239,9 +242,11 @@ To enhance site security, Cross-Site Request Forgery (CSRF) tokens have been imp
 - The navigation bar is fully responsive, collapsing into a hamburger menu when the screen size becomes too small.
 
 Desktop
+
 ![header](docs/header.png)
 
 Smaller devices
+
 ![navbar](docs/navbar.png)
 
 ### Footer
@@ -331,6 +336,7 @@ Upon successful deletion, the user will be notified with a message confirming th
 ![About page](docs/about.png)
 
 **Contact form**
+
 ![Contact form](docs/contact.png)
 
 
