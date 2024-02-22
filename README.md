@@ -13,11 +13,11 @@ The live link can be found here - [Foolprooflavors](https://foolproflavorsrecipe
 ## Table of Contents
 
 - [FoolProoFlavors](#foolprooflavors)
-  * [User Experience (UX)](#user-experience-ux)
+  * [User Experience](#user-experience)
     + [User Stories](#user-stories)
     + [Design](#design)
       - [Colors](#colors)
-      - [Imagery](#imagery)
+      - [Images](#images)
       - [Fonts](#fonts)
       - [Wireframes](#wireframes)
   * [Agile Methodology](#agile-methodology)
@@ -27,7 +27,7 @@ The live link can be found here - [Foolprooflavors](https://foolproflavorsrecipe
     + [User Authentication](#user-authentication)
     + [Form Validation](#form-validation)
     + [Database Security](#database-security)
-    + [Custom error page:](#custom-error-pages-)
+    + [Error page:](#error-page)
   * [Features](#features)
     + [Header](#header)
     + [Footer](#footer)
@@ -36,7 +36,6 @@ The live link can be found here - [Foolprooflavors](https://foolproflavorsrecipe
     + [Add Recipe Form](#add-recipe-form)
     + [Update Recipe Form](#update-recipe-form)
     + [Delete Recipe](#delete-recipe)
-    + [Error Pages](#error-pages)
     + [Future Features](#future-features)
   * [Deployment - Heroku](#deployment---heroku)
   * [Languages](#languages)
@@ -98,8 +97,7 @@ Kanban Board![Kanban Board](docs/userstory.png)
 
 The website boasts a straightforward and uncluttered design, deliberately chosen to support its mission: to foster a sense of confidence and community among users, and to ignite a passion for cooking in their everyday lives.
 
-#### Colour Scheme
-Colour palette from Coolors
+#### Colors
 
 ![Colour Palette](docs/red.png)
 ![Colour Palette](docs/white.png)
@@ -228,8 +226,7 @@ To enhance site security, Cross-Site Request Forgery (CSRF) tokens have been imp
 ### Header
 
 **Logo**
-- A customised logo was created using Hatchful by Shopify which is a free logo generator.
-- This logo is positioned in the top left of the navigation bar. The logo is linked to the home page for ease of navigation for the user.
+- The logo is positioned in the top left of the navigation bar. The logo is linked to the home page for ease of navigation for the user.
 
 **Navigation Bar**
 
@@ -243,16 +240,14 @@ Smaller devices
 ![navbar](docs/navbar.png)
 
 ### Footer
+The footer contains links to social media platforms including Facebook, Instagram, Twitter, and YouTube. These links, when clicked, open in a new browser tab to ensure users remain on the site.
 
 ![footer](docs/footer.png)
 
-The footer contains links to social media platforms including Facebook, Instagram, Twitter, and YouTube. These links, when clicked, open in a new browser tab to ensure users remain on the site.
+### Home Page
+Home page contains a hero image with the undertitle to brand name. Below, previews of recipes contributed by users are listed. In the preview, the name of the recipe, concept, meal type, effort, and rating of the recipe are shown. The name of the recipe and the concept text are links that take you to the page for that specific recipe.
 
-### Home Page///////
 ![Home](docs/home.png)
-
-
-
 
 ### User Account Pages
 Django allauth was implemented to facilitate the creation of Sign Up, Log In, and Log Out features. Users are notified through success messages upon successfully logging in or logging out.
@@ -285,39 +280,47 @@ Logged-in users can rate recipes on a scale of 1 to 10. Each time a user rates a
 
 **Comments Section**
 
-![Add, edit and delete comment](docs/comment.png)
-
 Below every recipe, all logged-in users can read previously published comments, and they have the ability to add new ones, as well as edit and delete their own previous comments. When a comment is added or updated, the admin must approve and publish it before it becomes visible to other users. The user who added or updated the comment can see their draft comment in a greyish color. The user receives a message notifying them that the comment has been successfully added, updated or deleted.
+
+![Add, edit and delete comment](docs/comment.png)
 
 
 ### Add Recipe Form
 
-![Add recipe](docs/add.png)
-
 Logged-in users can add a recipe by clicking the corresponding link in the navigation bar.
+
 The 'Ingredients' and 'Instructions' form fields feature a WYSIWYG editor named Summernote, enabling users to format their content with bullet points, headings, and more.
+
 Users have the option to upload a photo with their recipe. In the absence of a photo upload, a default image will be used as the recipe's image.
+
 Through a dropdown menu, users choose mealtype and effort of cooking.
 Omitting essential details such as the recipe's Title, Ingredients, or Instructions triggers an error message, highlighting the missing information.
+
 Attempting to add a recipe without being logged in—by triggers a error message that user needs to log in.
 Upon successful addition, the user is greeted with a message confirming that the recipe has been added successfully and awaiting admin to publish the recipe.
 
+![Add recipe](docs/add.png)
+
 ### Update Recipe Form
+
+Logged-in users who authored a recipe can opt to update it by selecting the update button located on the recipe detail page.
+
+The update button is not shown if the user is not the aurthor of the recipe.
+
+Upon initiating an update, the form will be pre-filled with the recipe's existing content.
+
+After successfully updating a recipe, users will receive a notification confirming the update's success and awaiting admin to publish the recipe.
 
 ![Update recipe](docs/update.png)
 
-Logged-in users who authored a recipe can opt to update it by selecting the update button located on the recipe detail page.
-The update button is not shown if the user is not the aurthor of the recipe.
-Upon initiating an update, the form will be pre-filled with the recipe's existing content.
-After successfully updating a recipe, users will receive a notification confirming the update's success and awaiting admin to publish the recipe.
-
 ### Delete Recipe
-
- ![Delete recipe](docs/delete.png)
 
 Logged-in users who are the authors of a recipe have the option to delete it by clicking the delete button on the recipe's detail page.
 A prompt will appear, asking the user to confirm the deletion or cancel the action.
+
 Upon successful deletion, the user will be notified with a message confirming that the recipe has been deleted.
+
+![Delete recipe](docs/delete.png)
 
 ### About page
 ![About page](docs/about.png)
@@ -423,15 +426,15 @@ Favicon by Adrien Coquet from <a href="https://thenounproject.com/browse/icons/t
 - [Django Docs](https://docs.djangoproject.com/en/4.0/)
 - [Bootstrap 4.6 Docs](https://getbootstrap.com/docs/4.6/getting-started/introduction/)
 - [Stack Overflow](https://stackoverflow.com/)
-- [Django Recipe Sharing Tutorial](https://www.youtube.com/watch?v=sBjbty691eI&list=PLXuTq6OsqZjbCSfiLNb2f1FOs8viArjWy) Each file specifies which sections of the code are derived from external sources.
-- [Code Institute - Blog Walkthrough Project](https://github.com/Code-Institute-Solutions/Django3blog) Each file specifies which sections of the code are derived from external sources.
+- [Django Recipe Sharing Tutorial](https://www.youtube.com/watch?v=sBjbty691eI&list=PLXuTq6OsqZjbCSfiLNb2f1FOs8viArjWy) Each file specifies which sections of the code are derived from this source.
+- [Code Institute - Blog Walkthrough Project](https://github.com/Code-Institute-Solutions/Django3blog) Each file specifies which sections of the code are derived from this source.
 
 
 ## Acknowledgments
 
-I would like to express our sincere appreciation to Jad Mokdad for his  guidance and support throughout the development of this coding project. His expertise and mentorship have been instrumental in helping me overcome challenges and enhance my coding skills.
+I would like to express my sincere appreciation to Jad Mokdad for his  guidance and support throughout the development of this coding project. His expertise and mentorship have been instrumental in helping me overcome challenges and enhance my coding skills.
 
-Readme inspired by Pedro Cristo https://github.com/PedroCristo/portfolio_project_4/ and Alison O'Keeffe https://github.com/AliOKeeffe/PP4_My_Meal_Planner
+README inspired by Pedro Cristo https://github.com/PedroCristo/portfolio_project_4/ and Alison O'Keeffe https://github.com/AliOKeeffe/PP4_My_Meal_Planner
 
 
 
