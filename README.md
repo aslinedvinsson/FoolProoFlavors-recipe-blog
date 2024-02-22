@@ -53,8 +53,10 @@ A visitor to Foolprooflavors would be someone who is most likely an adult who th
 For detailed acceptance criteria and tasks associated with each user story, please visit the GitHub repository [here](https://github.com/users/aslinedvinsson/projects/5)
 
 
-Example User Story![Example User Story](docs/userstoryex.png)
-Kanban Board![Kanban Board](docs/userstory.png)
+Example User Story
+![Example User Story](docs/userstoryex.png)
+Kanban Board
+![Kanban Board](docs/userstory.png)
 
 #### EPIC | Sign up/Log in
 - User Story: As a new user, I want to be able to register an account with my email.
@@ -171,7 +173,7 @@ The fonts were imported via [Google Fonts](https://fonts.google.com/).
 
 The development process was managed through GitHub projects, utilizing an agile methodology. Refer to the project board link for more details. [here](https://github.com/users/aslinedvinsson/projects/5)
 
-In the GitHub project, there is one Milstone including seven big tasks called Epics. Each smaller task, known as a User Story, is linked to an Epic. Every User Story includes clear criteria to show when it's done. These criteria are divided into smaller tasks to help complete the User Story. The MoSCoW method is used to decide which tasks are top priority and which ones can be done later in agile project management.
+In the GitHub project, there is one Milestone including seven big tasks called Epics. Each smaller task, known as a User Story, is linked to an Epic. Every User Story includes clear criteria to show when it's done. These criteria are divided into smaller tasks to help complete the User Story. The MoSCoW method is used to decide which tasks are top priority and which ones can be done later in agile project management.
 
 ![Kanban Board](docs/kanbanboard.png)
 
@@ -185,10 +187,11 @@ The ContactRequest model is taken from the CodeInstitute Walkthrough 'I think, t
 
 **RecipePost Model**
 The RecipePost model is a partly customed model through the combination of the CodeInstitute Walkthrough 'I think, therefor I blog' and [Django Recipe Sharing Tutorial](https://www.youtube.com/watch?v=sBjbty691eI&list=PLXuTq6OsqZjbCSfiLNb2f1FOs8viArjWy)
- Acts as the central entity, with each instance representing a unique recipe. It includes attributes such as title, ingredients, instructions, and a CloudinaryField for image storage. The user attribute is a ForeignKey linking to Django's User model, having a one-to-many relationship from User to RecipePost (a user can author multiple recipes, but each recipe has a single author).
+
+ The RecipePost model acts as the central entity, with each instance representing a unique recipe. It includes attributes such as title, ingredients, instructions, and a CloudinaryField for image storage. The user attribute is a ForeignKey linking to Django's User model, having a one-to-many relationship from User to RecipePost (a user can author multiple recipes, but each recipe has a single author).
 
 **Comment Model**
-The comment model is taken from the CodeInstitute Walkthrough 'I think, therefor I blog'. Model to store user comments on recipes, it has a many-to-one relationship with RecipePost via a ForeignKey. This setup allows multiple comments to be associated with a single recipe. There is also a ForeignKey back to the User model, indicating which user posted the comment, thus implementing a one-to-many relationship from User to Comment.
+The comment model is taken from the CodeInstitute Walkthrough 'I think, therefor I blog'. The model is used for storing user comments on recipes, it has a many-to-one relationship with RecipePost via a ForeignKey. This setup allows multiple comments to be associated with a single recipe. There is also a ForeignKey back to the User model, indicating which user posted the comment, thus implementing a one-to-many relationship from User to Comment.
 
 **RecipeRating Model**
 Custom model. Provides a mechanism for users to rate recipes, incorporating a numerical reciperating field. It maintains a dual ForeignKey setup: one linking to RecipePost and another to User. This creates a many-to-one relationship from RecipeRating to both RecipePost and User, enabling multiple ratings per recipe and per user.
@@ -196,7 +199,8 @@ Custom model. Provides a mechanism for users to rate recipes, incorporating a nu
 The diagrams below details the database schema.
 
 Entity Relationship Diagram![Entity Relationship Diagram ](docs/erd1.png)
-![](docs/erd2.png)
+
+![ntity Relationship Diagram ](docs/erd2.png)
 
 ## Testing
 
@@ -236,6 +240,7 @@ To enhance site security, Cross-Site Request Forgery (CSRF) tokens have been imp
 
 Desktop
 ![header](docs/header.png)
+
 Smaller devices
 ![navbar](docs/navbar.png)
 
