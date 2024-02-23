@@ -225,7 +225,7 @@ To enhance site security, Cross-Site Request Forgery (CSRF) tokens have been imp
 ### Error Page
 404 - Page Not Found error page was created to guide them back to the site.
 
-![404-Error](docs/404.png)
+![404-Error](docs/web/404.png)
 
 
 ## Features
@@ -243,42 +243,42 @@ To enhance site security, Cross-Site Request Forgery (CSRF) tokens have been imp
 
 Desktop
 
-![header](docs/header.png)
+![header](docs/web/header.png)
 
 Smaller devices
 
-![navbar](docs/navbar.png)
+![navbar](docs/web/navbar.png)
 
 ### Footer
 The footer contains links to social media platforms including Facebook, Instagram, Twitter, and YouTube. These links, when clicked, open in a new browser tab to ensure users remain on the site.
 
-![footer](docs/footer.png)
+![footer](docs/web/footer.png)
 
 ### Home Page
 Home page contains a hero image with the undertitle to brand name. Below, previews of recipes contributed by users are listed. In the preview, the name of the recipe, concept, meal type, effort, and rating of the recipe are shown. The name of the recipe and the concept text are links that take you to the page for that specific recipe.
 
-![Home](docs/home.png)
+![Home](docs/web/home.png)
 
 ### User Account Pages
 Django allauth was implemented to facilitate the creation of Sign Up, Log In, and Log Out features. Users are notified through success messages upon successfully logging in or logging out.
 
 **Register**
 
-![Sign up](docs/register.png)
+![Sign up](docs/web/register.png)
 
 **Log In**
 
-![Log in](docs/login.png)
+![Log in](docs/web/login.png)
 
 **Log Out**
 
-![Log out](docs/logout.png)
+![Log out](docs/web/logout.png)
 
 
 ### Recipe Detail Page
 
-![Recipe](docs/recipedetail.png)
-![Recipe](docs/recipedetail2.png)
+![Recipe](docs/web/recipedetail.png)
+![Recipe](docs/web/recipedetail2.png)
 
 The page show a title and image of the recipe, ingredients and instruction. The recipe contributor also choose meal type and level of effort in a roll down menu.
 
@@ -286,13 +286,13 @@ The page show a title and image of the recipe, ingredients and instruction. The 
 
 Logged-in users can rate recipes on a scale of 1 to 10. Each time a user rates a recipe, an average rating is calculated based on the total number of ratings from all users for that specific recipe, and the displayed rating is updated accordingly. Users are not allowed to rate their own submitted recipes.
 
-![Rating](docs/rating.png)
+![Rating](docs/web/rating.png)
 
 **Comments Section**
 
 Below every recipe, all logged-in users can read previously published comments, and they have the ability to add new ones, as well as edit and delete their own previous comments. When a comment is added or updated, the admin must approve and publish it before it becomes visible to other users. The user who added or updated the comment can see their draft comment in a greyish color. The user receives a message notifying them that the comment has been successfully added, updated or deleted.
 
-![Add, edit and delete comment](docs/comment.png)
+![Add, edit and delete comment](docs/web/comment.png)
 
 
 ### Add Recipe Form
@@ -309,7 +309,7 @@ Omitting essential details such as the recipe's Title, Ingredients, or Instructi
 Attempting to add a recipe without being logged in—by triggers a error message that user needs to log in.
 Upon successful addition, the user is greeted with a message confirming that the recipe has been added successfully and awaiting admin to publish the recipe.
 
-![Add recipe](docs/add.png)
+![Add recipe](docs/web/add.png)
 
 ### Update Recipe Form
 
@@ -321,7 +321,7 @@ Upon initiating an update, the form will be pre-filled with the recipe's existin
 
 After successfully updating a recipe, users will receive a notification confirming the update's success and awaiting admin to publish the recipe.
 
-![Update recipe](docs/update.png)
+![Update recipe](docs/web/update.png)
 
 ### Delete Recipe
 
@@ -330,14 +330,14 @@ A prompt will appear, asking the user to confirm the deletion or cancel the acti
 
 Upon successful deletion, the user will be notified with a message confirming that the recipe has been deleted.
 
-![Delete recipe](docs/delete.png)
+![Delete recipe](docs/web/delete.png)
 
 ### About page
-![About page](docs/about.png)
+![About page](docs/web/about.png)
 
 **Contact form**
 
-![Contact form](docs/contact.png)
+![Contact form](docs/web/contact.png)
 
 
 ### Future Features
@@ -444,6 +444,8 @@ Favicon by Adrien Coquet from <a href="https://thenounproject.com/browse/icons/t
 ## Acknowledgments
 
 I would like to express my sincere appreciation to Jad Mokdad for his  guidance and support throughout the development of this coding project. His expertise and mentorship have been instrumental in helping me overcome challenges and enhance my coding skills.
+
+I would also like to extend my gratitude to Rebecca and Joanne, tutors at Code Institute, for their assistance and patience throughout my learning journey.
 
 README inspired by Pedro Cristo https://github.com/PedroCristo/portfolio_project_4/ and Alison O'Keeffe https://github.com/AliOKeeffe/PP4_My_Meal_Planner
 
