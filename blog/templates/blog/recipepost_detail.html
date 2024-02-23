@@ -46,7 +46,7 @@
     <div class="col card mb-4  mt-3 left  top">
       <div class="card-body">
         <!-- The recipepost content inside the card-text. -->
-        <div class="recipepost-excerpt p-4">{{ recipepost.excerpt | safe }}</div>
+        <div class="p-4 fst-italic">{{ recipepost.excerpt | safe }}</div>
         <article class="card-text">
           <div class="container mt-4">
             <div class="border p-3">
@@ -61,7 +61,11 @@
             </div>
           </div>
           <br>
-          <p class="recipepost-contributor p-4 text-end">Contributor:
+          <p class="text-end pe-4">Meal type:
+            {{ recipepost.get_meal_type_display | safe }}</p>
+          <p class="text-end pe-4">Effort:
+            {{ recipepost.get_effort_display | safe }}</p>
+          <p class="text-end pe-4">Contributor:
             {{ recipepost.user }}</p>
         </article>
       </div>
