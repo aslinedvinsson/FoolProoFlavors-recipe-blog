@@ -34,10 +34,7 @@ comment.js
 
 
 ### Console Results
-The browser console shows one error. The error does not seem to affect any functions and does not show in any linter tool.
-![Console Result](docs/test/jserror.png)
-Solved through https://github.com/twbs/bootstrap/issues/37305
-
+The browser console shows no errors.
 
 ### Browser Testing
 The Website was tested on Google Chrome, Firefox, Safari browsers with no issues noted.
@@ -53,5 +50,5 @@ The Website was tested on Google Chrome, Firefox, Safari browsers with no issues
 - There is an unnecessary field created in the add and update form for the current image, even though information about the current image is provided below.
 
 ### Fixed Bugs
-Received a warning message in the devtools console. Solved it by adding <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests"> to base.html
+Received a warning message in the devtools console. Solved it by adding meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests" to base.html
 ![Console Warning](docs/test/warning.png)
