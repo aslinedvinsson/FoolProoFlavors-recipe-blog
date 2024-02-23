@@ -18,7 +18,7 @@ body {
 }
 
 /* Typography */
-.brand, .hero-text, .recipepost-title, .recipepost-excerpt {
+.brand, .hero-text, .recipepost-title {
     text-shadow: var(--text-shadow);
 }
 
@@ -154,12 +154,6 @@ footer {
     left: 60%;
     font-size: 3vw;
     text-shadow: 2px 2px 4px #393535;
-}
-
-.recipepost-excerpt {
-    font-size: 2rem;
-    font-weight: 200;
-    font-style: italic;
 }
 
 /* Pagination*/
