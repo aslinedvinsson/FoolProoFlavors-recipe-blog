@@ -88,4 +88,5 @@ class RecipePostForm(forms.ModelForm):
         widgets = {
             'ingredients': SummernoteWidget(),
             'instructions': SummernoteWidget(),
+            'excerpt': SummernoteWidget(),
         }
